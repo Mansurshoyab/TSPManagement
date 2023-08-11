@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\std_info;
 use Illuminate\Http\Request;
 
-class StdInfoController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +33,7 @@ class StdInfoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(std_info $std_info)
+    public function show(string $id)
     {
         //
     }
@@ -42,7 +41,7 @@ class StdInfoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(std_info $std_info)
+    public function edit(string $id)
     {
         //
     }
@@ -50,7 +49,7 @@ class StdInfoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, std_info $std_info)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -58,7 +57,7 @@ class StdInfoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(std_info $std_info)
+    public function destroy(string $id)
     {
         //
     }

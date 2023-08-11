@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\item_info;
-use Illuminate\Http\Request;
+use App\Models\Fees;
+use App\Http\Requests\StoreFeesRequest;
+use App\Http\Requests\UpdateFeesRequest;
 
-class ItemInfoController extends Controller
+class FeesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,7 +27,7 @@ class ItemInfoController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreFeesRequest $request)
     {
         //
     }
@@ -34,7 +35,7 @@ class ItemInfoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(item_info $item_info)
+    public function show(Fees $fees)
     {
         //
     }
@@ -42,7 +43,7 @@ class ItemInfoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(item_info $item_info)
+    public function edit(Fees $fees)
     {
         //
     }
@@ -50,7 +51,7 @@ class ItemInfoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, item_info $item_info)
+    public function update(UpdateFeesRequest $request, Fees $fees)
     {
         //
     }
@@ -58,7 +59,7 @@ class ItemInfoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(item_info $item_info)
+    public function destroy(Fees $fees)
     {
         //
     }

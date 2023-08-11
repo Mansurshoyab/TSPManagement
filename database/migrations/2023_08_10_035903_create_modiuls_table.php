@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('fees_collections', function (Blueprint $table) {
+        Schema::create('modiuls', function (Blueprint $table) {
             $table->id();
-            $table->integer('std_id');
-            $table->date('transaction_date');
-            $table->float('Amount',10,2);
-            $table->string('payment_method');
-            $table->string('receipt_number');
+            $table->bigInteger('course_id')->unsigned();
+            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
+            $table->string('modiul_name',50);
+            $table->text('description');
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('fees_collections');
+        Schema::dropIfExists('modiuls');
     }
 };

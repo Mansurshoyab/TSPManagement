@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\item_issue;
-use Illuminate\Http\Request;
+use App\Models\Trainer;
+use App\Http\Requests\StoreTrainerRequest;
+use App\Http\Requests\UpdateTrainerRequest;
 
-class ItemIssueController extends Controller
+class TrainerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,7 +27,7 @@ class ItemIssueController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreTrainerRequest $request)
     {
         //
     }
@@ -34,7 +35,7 @@ class ItemIssueController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(item_issue $item_issue)
+    public function show(Trainer $trainer)
     {
         //
     }
@@ -42,7 +43,7 @@ class ItemIssueController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(item_issue $item_issue)
+    public function edit(Trainer $trainer)
     {
         //
     }
@@ -50,7 +51,7 @@ class ItemIssueController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, item_issue $item_issue)
+    public function update(UpdateTrainerRequest $request, Trainer $trainer)
     {
         //
     }
@@ -58,7 +59,7 @@ class ItemIssueController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(item_issue $item_issue)
+    public function destroy(Trainer $trainer)
     {
         //
     }
