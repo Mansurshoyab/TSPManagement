@@ -26,5 +26,8 @@ Route::get('/student', function () { return view('student');});
 Route::get('/fees', function () { return view('fees');});
 Route::get('/item', function () { return view('item');});
 Route::get('/issue', function () { return view('issue');});
+Route::get('/course_cat', function () { return view('course_cat');});
+
+
 
 

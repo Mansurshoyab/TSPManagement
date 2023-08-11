@@ -52,27 +52,28 @@
             </li>
 
             <!-- Divider -->
-            {{-- <hr class="sidebar-divider"> --}}
+            <hr class="sidebar-divider">
 
             <!-- Heading -->
-            {{-- <div class="sidebar-heading">
+            <div class="sidebar-heading">
                 Interface
-            </div> --}}
+            </div>
 
-            {{-- <li class="nav-item">
+            <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>Sale</span>
+                    <span>Course</span>
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Sale Screens:</h6>
-                        <a class="collapse-item" href="{{ url('sale') }}">Sale Entry</a>
-                        <a class="collapse-item" href="{{ url('pos') }}">POS</a>
+                        <h6 class="collapse-header">Course:</h6>
+                        <a class="collapse-item" href="{{ url('course') }}">Course Information</a>
+                        <a class="collapse-item" href="{{ url('course_cat') }}">Course Category</a>
+                        <a class="collapse-item" href="{{ url('course_modiul') }}">Course Modiul</a>
                     </div>
                 </div>
-            </li> --}}
+            </li>
 
 
 
@@ -117,11 +118,11 @@
 
 
             <!-- Nav Item - Charts -->
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link" href="{{ url('course') }}">
                     <i class="bi bi-info-circle"></i>
                     <span>Course Information</span></a>
-            </li>
+            </li> --}}
 
             <li class="nav-item">
                 <a class="nav-link" href="{{ url('trainer') }}">

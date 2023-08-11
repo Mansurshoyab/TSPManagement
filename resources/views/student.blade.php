@@ -27,11 +27,11 @@
                                     <div class="row">
                                         <div class="col-sm-6 form-group">
                                             <label>First Name : </label>
-                                            <input name="fst_name" class="form-control" type="text" placeholder="Enter Your First Name">
+                                            <input name="first_name" class="form-control" type="text" placeholder="Enter Your First Name">
                                         </div>
                                         <div class="col-sm-6 form-group">
                                             <label>Last Name : </label>
-                                            <input name="lst_name" class="form-control" type="text" placeholder="Enter Your Last Name">
+                                            <input name="last_name" class="form-control" type="text" placeholder="Enter Your Last Name">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -61,18 +61,22 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-6 form-group">
-                                            <label>Major :</label>
-                                            <input name="major" class="form-control" type="text" placeholder="Enter Your Subject">
+                                            <label>address : </label>
+                                            <textarea name="address" class="form-control" placeholder ="address" id="" cols="2"rows="1"></textarea>
                                         </div>
                                         <div class="col-sm-6 form-group">
                                             <label>Addmission Date :</label>
-                                            <input name="addmit_date" class="form-control" type="date" placeholder="Enter Your Addmimite Date">
+                                            <input name="admission_date" class="form-control" type="date" placeholder="Enter Your Addmimite Date">
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-6 form-group">
+                                            <label>Major :</label>
+                                            <input name="major" class="form-control" type="text" placeholder="Enter Your Subject">
+                                        </div>
+                                        <div class="col-sm-6 form-group">
                                             <label>Course Id :</label>
-                                            <input name="crs_id" class="form-control" type="text" placeholder="Enter Your Course Id">
+                                            <input name="course_id" class="form-control" type="text" placeholder="Enter Your Course Id">
                                         </div>
                                     </div>
                                     <!--form body end -->

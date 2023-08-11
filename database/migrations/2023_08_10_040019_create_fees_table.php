@@ -17,11 +17,11 @@ return new class extends Migration
             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
             $table->bigInteger('course_id')->unsigned();
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
-            $table->string('transaction_id',50);
+            $table->string('transaction_id', 50);
             $table->date('transaction_date');
-            $table->decimal('amount',10,2);
-            $table->string('payment_method',25);
-            $table->string('receipt_number',25);
+            $table->decimal('amount', 10, 2);
+            $table->string('payment_method', 25);
+            $table->string('receipt_number', 25);
             $table->timestamps();
         });
     }

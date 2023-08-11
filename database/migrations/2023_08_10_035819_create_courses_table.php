@@ -13,17 +13,17 @@ return new class extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
-            $table->string('course_name',50);
+            $table->string('course_name', 50);
             $table->bigInteger('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->bigInteger('trainer_id')->unsigned();
             $table->foreign('trainer_id')->references('id')->on('trainers')->onDelete('cascade');
             $table->text('description');
-            $table->string('course_duretion',25);
+            $table->string('course_duretion', 25);
             $table->date('start_date');
             $table->date('end_date');
-            $table->decimal('course_fee',10,2);
-            $table->string('Location');
+            $table->decimal('course_fee', 10, 2);
+            $table->string('location');
             $table->timestamps();
         });
     }

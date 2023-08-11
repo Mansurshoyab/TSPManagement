@@ -27,11 +27,11 @@
                                     <div class="row">
                                         <div class="col-sm-6 form-group">
                                             <label>First Name : </label>
-                                            <input name="fst_name" class="form-control" type="text" placeholder="Enter Your First Name">
+                                            <input name="first_name" class="form-control" type="text" placeholder="Enter Your First Name">
                                         </div>
                                         <div class="col-sm-6 form-group">
                                             <label>Last Name : </label>
-                                            <input name="lst_name" class="form-control" type="text" placeholder="Enter Your Last Name">
+                                            <input name="last_name" class="form-control" type="text" placeholder="Enter Your Last Name">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -57,11 +57,21 @@
                                     <div class="row">
                                         <div class="col-sm-6 form-group">
                                             <label>Specialization :</label>
-                                            <input name="Specialization" class="form-control" type="text" placeholder="Enter Your Specialization">
+                                            <input name="specialization" class="form-control" type="text" placeholder="Enter Your Specialization">
                                         </div>
                                         <div class="col-sm-6 form-group">
-                                            <label>Location :</label>
-                                            <textarea name="location" class="form-control" placeholder ="Location" id="" cols="2"rows="1"></textarea>
+                                            <label>Status :</label>
+                                            <select name="status" class="form-control">
+                                                <option value="">---SELECT---</option>
+                                                <option value="active">Active</option>
+                                                <option value="inactive">Inactive</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 form-group">
+                                            <label>address :</label>
+                                            <textarea name="address" class="form-control" placeholder ="address" id="" cols="2"rows="1"></textarea>
                                         </div>
                                     </div>
                                     <!--form body end -->

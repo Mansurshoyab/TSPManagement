@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('course_id')->unsigned();
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
-            $table->string('modiul_name',50);
+            $table->string('modiul_name', 50);
             $table->text('description');
             $table->timestamps();
         });
