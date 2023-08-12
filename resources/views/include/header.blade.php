@@ -145,12 +145,12 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ url('item') }}">
                     <i class="bi bi-info-square"></i>
-                    <span>Item Information</span></a>
+                    <span>Markes</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ url('issue') }}">
                     <i class="bi bi-info-square-fill"></i>
-                    <span>Item Issue</span></a>
+                    <span>Certificate</span></a>
             </li>
 
             <!-- Divider -->

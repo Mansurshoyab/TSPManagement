@@ -26,12 +26,22 @@
                                     <!--form body start here-->
                                     <div class="row">
                                         <div class="col-sm-6 form-group">
-                                            <label>Student ID   : </label>
-                                            <input name="std_id" class="form-control" type="text" placeholder="Enter Student ID">
+                                            <label>Student ID : </label>
+                                            <input name="student_id" class="form-control" type="text" placeholder="Enter Student ID">
+                                        </div>
+                                        <div class="col-sm-6 form-group">
+                                            <label>Course ID : </label>
+                                            <input name="course_id" class="form-control" type="text" placeholder="Enter Course ID">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6 form-group">
+                                            <label>Transaction ID : </label>
+                                            <input name="transaction_id" class="form-control" type="text" placeholder="Enter Transaction ID">
                                         </div>
                                         <div class="col-sm-6 form-group">
                                             <label>Transaction Date  : </label>
-                                            <input name="transaction" class="form-control" type="text" placeholder="Enter Transaction Date">
+                                            <input name="transaction_date" class="form-control" type="text" placeholder="Enter Transaction Date">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -41,13 +51,13 @@
                                         </div>
                                         <div class="col-sm-6 form-group">
                                             <label>Payment Method : </label>
-                                            <input name="pay_method" class="form-control" type="text" placeholder="Payment Method">
+                                            <input name="payment_method" class="form-control" type="text" placeholder="Payment Method">
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-6 form-group">
                                             <label>Receipt Number : </label>
-                                            <input name="phone" class="form-control" type="text" placeholder="Monye Receipt Number">
+                                            <input name="receipt_number" class="form-control" type="text" placeholder="Monye Receipt Number">
                                         </div>
                                     </div>
                                     <!--form body end -->
