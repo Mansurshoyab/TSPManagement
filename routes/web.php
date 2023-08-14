@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,15 +20,33 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 
-Route::get('/',[DashboardController::class,('dashboard')]);
+Route::get('/', [DashboardController::class, ('dashboard')]);
 
-Route::get('/course', function () { return view('course');});
-Route::get('/trainer', function () { return view('trainer');});
-Route::get('/student', function () { return view('student');});
-Route::get('/fees', function () { return view('fees');});
-Route::get('/item', function () { return view('item');});
-Route::get('/issue', function () { return view('issue');});
-Route::get('/course_cat', function () { return view('course_cat');});
-Route::get('/course_modiul', function () { return view('course_modiul');});
+Route::prefix('/')->group(function () {
+    Route::resource('/course', CourseController::class);
+});
 
 
+Route::resource('course_cat', CategoryController::class);
+
+
+
+Route::get('/trainer', function () {
+    return view('trainer');
+});
+Route::get('/student', function () {
+    return view('student');
+});
+Route::get('/fees', function () {
+    return view('fees');
+});
+Route::get('/markes', function () {
+    return view('markes');
+});
+Route::get('/certificate', function () {
+    return view('certificate');
+});
+// Route::get('/course_cat', function () { return view('course_cat');});
+Route::get('/course_modiul', function () {
+    return view('course_modiul');
+});

@@ -14,6 +14,7 @@
 
                 <div class="" id="DonorAdd" tabindex="-1" role="dialog" aria-labelledby="DonorAdd" aria-hidden="true">
                     <form action="" method="POST">
+                        @csrf
                         {{-- <div class="modal-dialog modal-lg" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -25,13 +26,17 @@
                                 <div class="container">
                                     <!--form body start here-->
                                     <div class="row mt-3">
-                                        <div class="col-sm-6 form-group">
+                                        <div class="col-sm-4 form-group">
                                             <label>Course Name : </label>
                                             <input name="course_name" class="form-control" type="text" placeholder="Course Name">
                                         </div>
-                                        <div class="col-sm-6 form-group">
+                                        <div class="col-sm-4 form-group">
                                             <label>Course Subject : </label>
                                             <input name="course_sub" class="form-control" type="text" placeholder="Course Subject">
+                                        </div>
+                                        <div class="col-sm-4 form-group">
+                                            <label>Course category : </label>
+                                            <input name="category_id" class="form-control" type="text" placeholder="Course Subject">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -43,7 +48,7 @@
                                     <div class="row">
                                         <div class="col-sm-6 form-group">
                                             <label>Trainer : </label>
-                                            <input name="trainer" class="form-control" type="text" placeholder="Trainer Name">
+                                            <input name="trainer_id" class="form-control" type="text" placeholder="Trainer Name">
                                         </div>
                                         <div class="col-sm-6 form-group">
                                             <label>Course Duretion : </label>

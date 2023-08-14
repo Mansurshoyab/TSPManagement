@@ -3,17 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
-use App\Http\Requests\StoreCourseRequest;
+// use App\Http\Requests\StoreCourseRequest;
 use App\Http\Requests\UpdateCourseRequest;
+use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
-    /**
+    /*
      * Display a listing of the resource.
      */
+
+    
     public function index()
     {
-        //
+        $courses = Course::all();
+        return view('course', compact('courses'));
     }
 
     /**
@@ -27,10 +31,17 @@ class CourseController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCourseRequest $request)
-    {
-        //
+
+    public function store(Request $request){
+        // dd($request);
+        Course::create($request->all());
+
     }
+
+    // public function store(StoreCourseRequest $request)
+    // {
+    //     return "This is data";
+    // }
 
     /**
      * Display the specified resource.
