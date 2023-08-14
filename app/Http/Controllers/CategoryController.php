@@ -43,27 +43,43 @@ class CategoryController extends Controller
         return view('pages.category.show')->with('categories', $category);
     }
 
-    /**
+    /*
      * Show the form for editing the specified resource.
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
-        //
+        // dd($id);
+        $categories = Category::find($id);
+        return view('pages.category.edit')->with('categories', $categories);
+        
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCategoryRequest $request, Category $category)
+    // public function update(UpdateCategoryRequest $request, Category $category)
+    // {
+    //     //
+    // }
+
+    public function update($id)
     {
-        //
+        $category = Category::find($id);
+        $category->name = $category->name;
+        $category->description = $category->description;
+        if ($category->save()) {
+            return redirect("category")->with("info", "Successfully Updated category, ID: " . $category->id);
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        //
+        $category = Category::find($id);
+        if ($category->delete()) {
+            return redirect("category")->with("info", "Successfully Deleted category, ID: " . $category->id);
+        }
     }
 }

@@ -26,8 +26,12 @@ Route::prefix('/')->group(function () {
     Route::resource('/course', CourseController::class);
 });
 
+Route::prefix('/')->group(function () {
+    Route::resource('course_cat', CategoryController::class);
+});
 
-Route::resource('course_cat', CategoryController::class);
+
+
 
 
 

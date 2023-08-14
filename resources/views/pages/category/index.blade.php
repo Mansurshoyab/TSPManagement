@@ -53,10 +53,10 @@
                         <table class="table">
                             <thead>
                               <tr>
-                                <th scope="col">ID</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Description</th>
-                                <th scope="col">Action</th>
+                                <th class="col-md-2">ID</th>
+                                <th class="col-md-2">Name</th>
+                                <th class="col-md-6">Description</th>
+                                <th class="col-md-2">Action</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -67,8 +67,8 @@
                                         <td>{{ $category->description }}</td>
                                         <td>
                                             <a href="{{ route('course_cat.show', $category->id) }}"><i class="bi bi-arrows-fullscreen text-lg p-1"></i></a>
-                                            <a href="{{ url('edit_course_cat') }}"><i class="bi bi-pencil-square text-lg p-1"></i></i></a>
-                                            <a href="{{ url('update_course_cat') }}"><i class="bi bi-trash3 text-lg p-1"></i></i></a>
+                                            <a href="{{ route('course_cat.edit', $category->id) }}"><i class="bi bi-pencil-square text-lg p-1"></i></i></a>
+                                            <a href="{{ route('course_cat.delete', $category->id)) }}"><i class="bi bi-trash3 text-lg p-1"></i></i></a>
                                         </td>
                                     </tr>
                                 @endforeach

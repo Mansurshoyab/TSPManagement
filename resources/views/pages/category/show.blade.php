@@ -17,7 +17,7 @@
                         <div class="card-body">
                           <h5 class="card-title">{{ $categories->name }}</h5>
                           <p class="card-text">{{ $categories->description }}</p>
-                          <a href="#" class="btn btn-primary">Go somewhere</a>
+                          <a href="{{ url('course_cat') }}" class="btn btn-primary">Go Home</a>
                         </div>
                       </div>
                    
