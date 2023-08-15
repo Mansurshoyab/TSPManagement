@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('trainers', function (Blueprint $table) {
             $table->id();
-            $table->string('first_name',50);
-            $table->string('last_name',50);
+            $table->string('first_name', 50);
+            $table->string('last_name', 50);
             $table->date('dob');
-            $table->string('email',50);
-            $table->string('phone',50);
-            $table->string('address',80);
-            $table->string('specialization',80);
-            $table->string('experience',80);
+            $table->string('email', 50);
+            $table->string('phone', 50);
+            $table->string('address', 80);
+            $table->string('specialization', 80);
+            $table->string('experience', 80);
             $table->tinyInteger('status')->default(0);
             $table->timestamps();
         });

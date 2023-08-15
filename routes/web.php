@@ -4,6 +4,7 @@ use App\Http\Controllers\BottolController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\TrainerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,7 +29,11 @@ Route::prefix('/')->group(function () {
     Route::resource('category', CategoryController::class);
 });
 
-// Route::get('/', [DashboardController::class, ('dashboard')]);
+Route::prefix('/')->group(function(){
+    Route::resource('/trainer', TrainerController::class);
+});
+
+Route::get('/', [DashboardController::class, ('dashboard')]);
 
 
 

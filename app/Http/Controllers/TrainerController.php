@@ -13,7 +13,7 @@ class TrainerController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.trainer.index')->with(['trainers' => Trainer::all()]);
     }
 
     /**
@@ -29,7 +29,10 @@ class TrainerController extends Controller
      */
     public function store(StoreTrainerRequest $request)
     {
-        //
+        // dd($request);
+        $trainer = $request->all();
+        Trainer::create($trainer);
+        return view('pages.trainer.index');
     }
 
     /**
@@ -37,7 +40,7 @@ class TrainerController extends Controller
      */
     public function show(Trainer $trainer)
     {
-        //
+        dd($trainer);
     }
 
     /**
