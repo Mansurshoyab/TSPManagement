@@ -69,7 +69,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Course:</h6>
                         <a class="collapse-item" href="{{ url('course') }}">Course Information</a>
-                        <a class="collapse-item" href="{{ url('course_cat') }}">Course Category</a>
+                        <a class="collapse-item" href="{{ url('category') }}">Course Category</a>
                         <a class="collapse-item" href="{{ url('course_modiul') }}">Course Modiul</a>
                     </div>
                 </div>
