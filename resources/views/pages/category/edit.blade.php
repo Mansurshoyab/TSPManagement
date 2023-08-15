@@ -5,10 +5,6 @@
     <div class="row">
         <div class="col-md-12">
             <div class="ibox">
-                <div class="ibox-head">
-                    {{-- <div class="ibox-title">Category</div> --}}
-                </div>
-
                 <div class="" id="DonorAdd" tabindex="-1" role="dialog" aria-labelledby="DonorAdd" aria-hidden="true">
                     <form action="{{ route('category.update', $category->id) }}" method="post">
                         @csrf
@@ -41,11 +37,8 @@
                             <!--form body end -->
                         </div>
                     </form>
-                   
                 </div>
             </div>
-
-            
         </div>
     </div> 
 </div>

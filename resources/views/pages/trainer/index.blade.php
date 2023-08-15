@@ -97,41 +97,39 @@
                     <th scope="col">Phone</th>
                     <th scope="col">Address</th>
                     <th scope="col">specialization</th>
+                    <th scope="col">experience</th>
                     <th scope="col">status</th>
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                    @foreach ($trainer as $traine)
+                    @foreach ($trainers as $trainer)
                   <tr>
-                    <th scope="row">{{ $trainers->id }}</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>Otto</td>
-                    <td>Otto</td>
-                    <td>Otto</td>
-                    <td>Otto</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
+                    <th scope="row">{{ $trainer->id }}</th>
+                    <td>{{ $trainer->first_name }}</td>
+                    <td>{{ $trainer->last_name }}</td>
+                    <td>{{ $trainer->dob }}</td>
+                    <td>{{ $trainer->email }}</td>
+                    <td>{{ $trainer->phone }}</td>
+                    <td>{{ $trainer->address }}</td>
+                    <td>{{ $trainer->specialization }}</td>
+                    <td>{{ $trainer->experience }}</td>
+                    <td>{{ $trainer->status}}</td>
                     <td>
                         <a href="#"><i class="bi bi-arrows-fullscreen text-lg p-1"></i></a>
-                        {{-- <a href="{{ route('category.edit', $category->id) }}"><i class="bi bi-pencil-square text-lg p-1"></i></i></a>
-                        <form action="{{  route('category.destroy', $category->id) }}" method="POST">
+                        <a href="{{ route('trainer.edit', $trainer->id) }}"><i class="bi bi-pencil-square text-lg p-1"></i></i></a>
+                        <form action="{{  route('trainer.destroy', $trainer->id) }}" method="POST">
                             @csrf
                             @method('delete')
                             <button type="submit" class="btn btn-danger">
                                 <i class="bi bi-trash3 text-lg"></i></i>
                             </button>
-                        </form> --}}
+                        </form>
                     </td>
                   </tr>
+                  @endforeach
                 </tbody>
-                @endforeach
               </table>
-
-
-
-
         </div>
     </div> 
 </div>

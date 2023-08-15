@@ -13,7 +13,9 @@ class TrainerController extends Controller
      */
     public function index()
     {
+        // dd(Trainer::all());
         return view('pages.trainer.index')->with(['trainers' => Trainer::all()]);
+
     }
 
     /**
@@ -32,7 +34,8 @@ class TrainerController extends Controller
         // dd($request);
         $trainer = $request->all();
         Trainer::create($trainer);
-        return view('pages.trainer.index');
+        return view('pages.trainer.index')->with(['trainers' => Trainer::all()]);
+        // dd($trainer)
     }
 
     /**
@@ -40,7 +43,7 @@ class TrainerController extends Controller
      */
     public function show(Trainer $trainer)
     {
-        dd($trainer);
+        // dd($trainer);
     }
 
     /**
@@ -48,7 +51,11 @@ class TrainerController extends Controller
      */
     public function edit(Trainer $trainer)
     {
-        //
+        
+        return view('pages.trainer.edit', [
+            'trainer' => $trainer,
+            'trainers' => Trainer::all()
+        ]);
     }
 
     /**
@@ -56,7 +63,19 @@ class TrainerController extends Controller
      */
     public function update(UpdateTrainerRequest $request, Trainer $trainer)
     {
-        //
+        $trainer->update([
+            'first_name' => $request->input('first_name'),
+            'last_name' => $request->input('last_name'),
+            'dob' => $request->input('dob'),
+            'email' => $request->input('email'),
+            'phone' => $request->input('phone'),
+            'address' => $request->input('address'),
+            'specialization' => $request->input('specialization'),
+            'experience' => $request->input('experience'),
+            'status' => $request->input('status'),
+        ]);
+    
+        return redirect()->route('trainer.index');
     }
 
     /**
@@ -64,6 +83,7 @@ class TrainerController extends Controller
      */
     public function destroy(Trainer $trainer)
     {
-        //
+        $trainer->delete();
+        return redirect()->route('trainer.index');
     }
 }
