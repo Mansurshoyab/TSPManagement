@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 // use App\Http\Requests\StoreCourseRequest;
 use App\Http\Requests\UpdateCourseRequest;
+use App\Models\Category;
+use App\Models\Trainer;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -17,7 +19,9 @@ class CourseController extends Controller
     public function index()
     {
         $courses = Course::all();
-        return view('course', compact('courses'));
+        $categories = Category::all();
+        $trainers = Trainer::all();
+        return view('pages.course.index', compact('courses','categories','trainers'));
     }
 
     /**
@@ -35,6 +39,7 @@ class CourseController extends Controller
     public function store(Request $request){
         // dd($request);
         Course::create($request->all());
+        return back();
 
     }
 

@@ -15,7 +15,6 @@ class TrainerController extends Controller
     {
         // dd(Trainer::all());
         return view('pages.trainer.index')->with(['trainers' => Trainer::all()]);
-
     }
 
     /**
@@ -51,7 +50,6 @@ class TrainerController extends Controller
      */
     public function edit(Trainer $trainer)
     {
-        
         return view('pages.trainer.edit', [
             'trainer' => $trainer,
             'trainers' => Trainer::all()

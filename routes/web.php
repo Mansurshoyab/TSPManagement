@@ -24,13 +24,16 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::prefix('/')->group(function () {
-    Route::resource('/course', CourseController::class);
     Route::resource('bottol', BottolController::class);
     Route::resource('category', CategoryController::class);
 });
 
 Route::prefix('/')->group(function(){
     Route::resource('/trainer', TrainerController::class);
+});
+
+Route::prefix('/')->group(function(){
+    Route::resource('/course', CourseController::class);
 });
 
 Route::get('/', [DashboardController::class, ('dashboard')]);
