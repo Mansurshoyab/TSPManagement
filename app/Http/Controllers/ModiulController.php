@@ -5,15 +5,22 @@ namespace App\Http\Controllers;
 use App\Models\Modiul;
 use App\Http\Requests\StoreModiulRequest;
 use App\Http\Requests\UpdateModiulRequest;
+use App\Models\Course;
 
 class ModiulController extends Controller
 {
+
+    //  public function modiul(){
+    //     return view('pages.modiul.index');
+    //  }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $course = Course::all();
+        $modiul = Modiul::all();
+        return view('pages.modiul.index')->with(['course'=> $course, 'modiul'=> $modiul]);
     }
 
     /**
@@ -21,7 +28,7 @@ class ModiulController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.modiul.index');
     }
 
     /**
@@ -29,7 +36,9 @@ class ModiulController extends Controller
      */
     public function store(StoreModiulRequest $request)
     {
-        //
+        dd($request);
+        Modiul::create($request->all());
+        return redirect()->route('modiul.index')->with(['msg' => 'New category created', 'type' => 'success']);
     }
 
     /**

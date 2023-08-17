@@ -22,7 +22,8 @@ class Trainer extends Model
         'status',
     ];
 
-    public function courses(): HasMany{
+    public function courses(): HasMany
+    {
         return $this->hasMany(Course::class);
     }
 }
