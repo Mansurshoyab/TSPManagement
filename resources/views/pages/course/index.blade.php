@@ -109,22 +109,22 @@
                     <td>{{ $course->course_fee }}</td>
                     <td>{{ $course->location}}</td>
                     <td>
-                        {{-- <a href="#"><i class="bi bi-arrows-fullscreen text-lg p-1"></i></a>
-                        <a href="{{ route('trainer.edit', $trainer->id) }}"><i class="bi bi-pencil-square text-lg p-1"></i></i></a>
-                        <form action="{{  route('trainer.destroy', $trainer->id) }}" method="POST">
+                        {{-- <a href="#"><i class="bi bi-arrows-fullscreen text-lg p-1"></i></a> --}}
+                        <a href="{{ route('course.edit', $course->id) }}"><i class="bi bi-pencil-square text-lg p-1"></i></i></a>
+                        <form action="{{  route('course.destroy', $course->id) }}" method="POST">
                             @csrf
                             @method('delete')
                             <button type="submit" class="btn btn-danger">
                                 <i class="bi bi-trash3 text-lg"></i></i>
                             </button>
-                        </form> --}}
+                        </form>
                     </td>
                   </tr>
                   @endforeach
                 </tbody>
               </table>
 
-        </div>
+        </div>  
     </div> 
 </div>
 

@@ -72,7 +72,7 @@ class TrainerController extends Controller
             'experience' => $request->input('experience'),
             'status' => $request->input('status'),
         ]);
-    
+
         return redirect()->route('trainer.index');
     }
 

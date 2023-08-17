@@ -86,29 +86,29 @@ class CategoryController extends Controller
         //     'description' => 'required|string',
         //     // Add any other validation rules you need
         // ]);
-    
+
         $category->update([
             'name' => $request->input('name'),
             'description' => $request->input('description'),
         ]);
-    
+
         return redirect()->route('category.index');
         //->with('success', 'Category updated successfully.')
     }
-    
-    
+
+
 
     /**
      * Remove the specified resource from storage.
      */
 
 
-     public function destroy(Category $category)
-     {
+    public function destroy(Category $category)
+    {
         // dd($category);
         $category->delete();
         return redirect()->route('category.index');
-     }
+    }
 
     // public function destroy(){
     // $category = Category::find($id);
