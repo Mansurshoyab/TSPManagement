@@ -26,29 +26,35 @@
                                     <!--form body start here-->
                                     <div class="row">
                                         <div class="col-sm-6 form-group">
+                                            <label>Course Id :</label>
+                                            <input name="course_id" class="form-control" type="text" placeholder="Enter Your Course Id">
+                                        </div>
+                                        <div class="col-sm-6 form-group">
                                             <label>First Name : </label>
                                             <input name="first_name" class="form-control" type="text" placeholder="Enter Your First Name">
                                         </div>
+                                    </div>
+                                    <div class="row">
                                         <div class="col-sm-6 form-group">
                                             <label>Last Name : </label>
                                             <input name="last_name" class="form-control" type="text" placeholder="Enter Your Last Name">
                                         </div>
-                                    </div>
-                                    <div class="row">
                                         <div class="col-sm-6 form-group">
                                             <label>Date Of Birth : </label>
                                             <input name="dob" class="form-control" type="dob" placeholder=" Enter Your Date Of Birth">
                                         </div>
+                                    </div>
+                                    <div class="row">
                                         <div class="col-sm-6 form-group">
                                             <label>Email : </label>
                                             <input name="email" class="form-control" type="email" placeholder="Enter Your Email">
                                         </div>
-                                    </div>
-                                    <div class="row">
                                         <div class="col-sm-6 form-group">
                                             <label>Phone : </label>
                                             <input name="phone" class="form-control" type="text" placeholder="Enter Your Number">
                                         </div>
+                                    </div>
+                                    <div class="row">
                                         <div class="col-sm-6 form-group">
                                             <label>Gender : </label>
                                             <select class="form-control" id="gender" name="gender">
@@ -56,28 +62,22 @@
                                                 <option value="male">Male</option>
                                                 <option value="female">Female</option>
                                             </select>
-
                                         </div>
-                                    </div>
-                                    <div class="row">
                                         <div class="col-sm-6 form-group">
                                             <label>address : </label>
                                             <textarea name="address" class="form-control" placeholder ="address" id="" cols="2"rows="1"></textarea>
                                         </div>
+                                    </div>
+                                    <div class="row">
                                         <div class="col-sm-6 form-group">
                                             <label>Addmission Date :</label>
                                             <input name="admission_date" class="form-control" type="date" placeholder="Enter Your Addmimite Date">
                                         </div>
-                                    </div>
-                                    <div class="row">
                                         <div class="col-sm-6 form-group">
                                             <label>Major :</label>
                                             <input name="major" class="form-control" type="text" placeholder="Enter Your Subject">
                                         </div>
-                                        <div class="col-sm-6 form-group">
-                                            <label>Course Id :</label>
-                                            <input name="course_id" class="form-control" type="text" placeholder="Enter Your Course Id">
-                                        </div>
+
                                     </div>
                                     <!--form body end -->
                                 </div>
@@ -88,8 +88,49 @@
                         </div>
                     </form>
                 </div>
-        
             </div>
+            <table>
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th class="col-md-1">ID</th>
+                        <th class="col-md-1">Course Id</th>
+                        <th class="col-md-2">First Name</th>
+                        <th class="col-md-2">Last Name</th>
+                        <th class="col-md-1">DOB</th>
+                        <th class="col-md-1">Email</th>
+                        <th class="col-md-1">Phone</th>
+                        <th class="col-md-1">Gender</th>
+                        <th class="col-md-2">address</th>
+                        <th class="col-md-1">Addmission Date</th>
+                        <th class="col-md-1">Major</th>
+                        <th class="col-md-1">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {{-- @foreach ($modiuls as $modiul)
+                            <tr>
+                                <td scope="row">{{ $modiul->id }}</td>
+                                <td>{{ $modiul->course->course_name }}</td>
+                                <td>{{ $modiul->modiul_name }}</td>
+                                <td>{{ $modiul->description }}</td>
+                                <td>
+                                    <a href="{{ route('category.show', $category->id) }}"><i class="bi bi-arrows-fullscreen text-lg p-1"></i></a>
+                                    <a href="{{ route('modiul.edit', $modiul->id) }}"><i class="bi bi-pencil-square text-lg p-1"></i></i></a>
+                                    <form action="{{  route('modiul.destroy', $modiul->id) }}" method="POST">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="btn btn-danger">
+                                            <i class="bi bi-trash3 text-lg"></i></i>
+                                        </button>
+                                    </form>
+                                    <a href="{{ route('modiul.destroy', $modiul->id) }}"><i class="bi bi-trash3 text-lg p-1"></i></i></a>
+                                </td>
+                            </tr>
+                        @endforeach --}}
+                    </tbody>
+                  </table>
+            </table>
         </div>
     </div> 
 </div>
