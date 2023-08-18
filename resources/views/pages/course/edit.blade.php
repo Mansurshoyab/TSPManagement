@@ -23,8 +23,6 @@
                                         @foreach ($categories as $category)
                                         <option value="{{ $category->id }}" {{ old('category') == $category->id ? 'selected' : '' }}>
                                             {{ $category->name }}
-                                        {{-- <option value="{{ $category->id }}" {{ old('category') == $category->id ? 'selected' : '' }}>
-                                            {{ $category->name }} --}}
                                         </option>
                                         </option>
                                     @endforeach
@@ -73,6 +71,7 @@
                             </div>
                             <div class="row ">
                                 <div class="col-sm-12 form-group text-right">
+
                                     <input type="submit" value="Add Course" class="btn btn-primary">
                                 </div>
                             </div>

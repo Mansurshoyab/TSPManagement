@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
-// use App\Http\Requests\StoreCourseRequest;
+use App\Http\Requests\StoreCourseRequest;
 use App\Http\Requests\UpdateCourseRequest;
 use App\Models\Category;
 use App\Models\Trainer;
@@ -22,7 +22,7 @@ class CourseController extends Controller
         $categories = Category::all();
         $trainers = Trainer::all();
         // return view('pages.course.index', compact('courses', 'categories', 'trainers'));
-        return view('pages.course.index')->with(['categories'=>$categories,'trainers'=>$trainers, 'courses'=>$courses]);
+        return view('pages.course.index')->with(['categories' => $categories, 'trainers' => $trainers, 'courses' => $courses]);
     }
 
     /**
@@ -63,16 +63,15 @@ class CourseController extends Controller
     public function edit(Course $course)
     {
         // dd($categories);
-    //     return view('pages.course.edit',[
-    //     'course' => $course,
-    //     'courses' => Course::all()
-        
-    // ]);
-    $courses = Course::all();
-    $categories = Category::all();
-    $trainers = Trainer::all();
-    return view('pages.course.edit')->with(['categories'=>$categories, 'trainers'=>$trainers , 'course'=>$course]);
-    
+        //     return view('pages.course.edit',[
+        //     'course' => $course,
+        //     'courses' => Course::all()
+
+        // ]);
+        $courses = Course::all();
+        $categories = Category::all();
+        $trainers = Trainer::all();
+        return view('pages.course.edit')->with(['categories' => $categories, 'trainers' => $trainers, 'course' => $course]);
     }
 
     /**
@@ -80,26 +79,26 @@ class CourseController extends Controller
      */
     public function update(UpdateCourseRequest $request, Course $course)
     {
-
+                dd($request);
         // dd($request->all()); 
-        dd($course); 
+        // dd($course);
 
-        // $course->update([
-        //     'first_name' => $request->input('first_name'),
-        //     'last_name' => $request->input('last_name'),
-        //     'dob' => $request->input('dob'),
-        //     'email' => $request->input('email'),
-        //     'phone' => $request->input('phone'),
-        //     'address' => $request->input('address'),
-        //     'specialization' => $request->input('specialization'),
-        //     'experience' => $request->input('experience'),
-        //     'status' => $request->input('status'),
-        // ]);
+        $course->update([
+            'first_name' => $request->input('first_name'),
+            'last_name' => $request->input('last_name'),
+            'dob' => $request->input('dob'),
+            'email' => $request->input('email'),
+            'phone' => $request->input('phone'),
+            'address' => $request->input('address'),
+            'specialization' => $request->input('specialization'),
+            'experience' => $request->input('experience'),
+            'status' => $request->input('status'),
+        ]);
 
         return redirect()->route('course.index');
 
         // return redirect()->route('pages.course.index');
-    
+
     }
 
     /**
