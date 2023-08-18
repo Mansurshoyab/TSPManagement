@@ -19,8 +19,8 @@ class ModiulController extends Controller
     public function index()
     {
         $course = Course::all();
-        $modiul = Modiul::all();
-        return view('pages.modiul.index')->with(['course'=> $course, 'modiul'=> $modiul]);
+        $modiuls  = Modiul::all();
+        return view('pages.modiul.index')->with(['course'=> $course, 'modiuls'=> $modiuls ]);
     }
 
     /**
@@ -28,7 +28,7 @@ class ModiulController extends Controller
      */
     public function create()
     {
-        return view('pages.modiul.index');
+        // return view('pages.modiul.index');
     }
 
     /**
@@ -36,7 +36,7 @@ class ModiulController extends Controller
      */
     public function store(StoreModiulRequest $request)
     {
-        dd($request);
+        // dd($request);
         Modiul::create($request->all());
         return redirect()->route('modiul.index')->with(['msg' => 'New category created', 'type' => 'success']);
     }
@@ -52,17 +52,27 @@ class ModiulController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
+
     public function edit(Modiul $modiul)
     {
-        //
+        // dd($modiul);
+        $course = Course::all();
+        return view('pages.modiul.edit')->with(['course'=>$course,'modiul'=>$modiul,]);
     }
+
 
     /**
      * Update the specified resource in storage.
      */
     public function update(UpdateModiulRequest $request, Modiul $modiul)
     {
-        //
+        $modiul->update([
+            'course_id' => $request->input('course_id'),
+            'modiul_name' => $request->input('modiul_name'),
+            'description' => $request->input('description'),
+        ]);
+
+        return redirect()->route('modiul.index');
     }
 
     /**
@@ -70,6 +80,7 @@ class ModiulController extends Controller
      */
     public function destroy(Modiul $modiul)
     {
-        //
+        $modiul->delete();
+        return redirect()->route('modiul.index');
     }
 }

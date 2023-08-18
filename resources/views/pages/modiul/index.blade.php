@@ -16,10 +16,6 @@
                             <!--form body start here-->
                             <div class="row mt-3">
                                 <div class="col-sm-6 form-group">
-                                    <label>Modiul Name : </label>
-                                    <input name="modiul_name" class="form-control" type="text" placeholder="Modiul Name">
-                                </div>
-                                <div class="col-sm-6 form-group">
                                     <label>Course Id : </label>
                                     <select name="course_id" id="" class="form-control">
                                         @foreach ($course as $course)
@@ -27,6 +23,10 @@
                                         @endforeach
                                         
                                     </select>
+                                </div>
+                                <div class="col-sm-6 form-group">
+                                    <label>Modiul Name : </label>
+                                    <input name="modiul_name" class="form-control" type="text" placeholder="Modiul Name">
                                 </div>
                             </div>
                             <div class="row">
@@ -44,8 +44,42 @@
                         <!--form body end -->
                     </form>
                 </div>
-        
             </div>
+            <table>
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th class="col-md-1">ID</th>
+                        <th class="col-md-2">Course Name</th>
+                        <th class="col-md-2">Modiul</th>
+                        <th class="col-md-5">Description</th>
+                        <th class="col-md-2">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($modiuls as $modiul)
+                            <tr>
+                                <td scope="row">{{ $modiul->id }}</td>
+                                <td>{{ $modiul->course->course_name }}</td>
+                                <td>{{ $modiul->modiul_name }}</td>
+                                <td>{{ $modiul->description }}</td>
+                                <td>
+                                    {{-- <a href="{{ route('category.show', $category->id) }}"><i class="bi bi-arrows-fullscreen text-lg p-1"></i></a> --}}
+                                    <a href="{{ route('modiul.edit', $modiul->id) }}"><i class="bi bi-pencil-square text-lg p-1"></i></i></a>
+                                    <form action="{{  route('modiul.destroy', $modiul->id) }}" method="POST">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="btn btn-danger">
+                                            <i class="bi bi-trash3 text-lg"></i></i>
+                                        </button>
+                                    </form>
+                                    {{-- <a href="{{ route('modiul.destroy', $modiul->id) }}"><i class="bi bi-trash3 text-lg p-1"></i></i></a> --}}
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                  </table>
+            </table>
         </div>
     </div> 
 </div>

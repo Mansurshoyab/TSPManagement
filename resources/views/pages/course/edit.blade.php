@@ -21,11 +21,10 @@
                                     <label>Course category : </label>
                                     <select name="category_id" id="" class="form-control">
                                         @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}" {{ old('category') == $category->id ? 'selected' : '' }}>
-                                            {{ $category->name }}
-                                        </option>
-                                        </option>
-                                    @endforeach
+                                            <option value="{{ $category->id }}" {{ $category->id == $category->id ? 'selected' : '' }}>
+                                                {{ $category->name }}
+                                            </option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>

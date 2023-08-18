@@ -62,12 +62,7 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
-        // dd($categories);
-        //     return view('pages.course.edit',[
-        //     'course' => $course,
-        //     'courses' => Course::all()
 
-        // ]);
         $courses = Course::all();
         $categories = Category::all();
         $trainers = Trainer::all();
@@ -93,8 +88,6 @@ class CourseController extends Controller
         ]);
 
         return redirect()->route('course.index');
-
-
     }
 
     /**
