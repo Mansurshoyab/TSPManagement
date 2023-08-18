@@ -79,25 +79,21 @@ class CourseController extends Controller
      */
     public function update(UpdateCourseRequest $request, Course $course)
     {
-                dd($request);
-        // dd($request->all()); 
-        // dd($course);
 
         $course->update([
-            'first_name' => $request->input('first_name'),
-            'last_name' => $request->input('last_name'),
-            'dob' => $request->input('dob'),
-            'email' => $request->input('email'),
-            'phone' => $request->input('phone'),
-            'address' => $request->input('address'),
-            'specialization' => $request->input('specialization'),
-            'experience' => $request->input('experience'),
-            'status' => $request->input('status'),
+            'course_name' => $request->input('course_name'),
+            'category_id' => $request->input('category_id'),
+            'description' => $request->input('description'),
+            'trainer_id' => $request->input('trainer_id'),
+            'course_duretion' => $request->input('course_duretion'),
+            'start_date' => $request->input('start_date'),
+            'end_date' => $request->input('end_date'),
+            'course_fee' => $request->input('course_fee'),
+            'location' => $request->input('location'),
         ]);
 
         return redirect()->route('course.index');
 
-        // return redirect()->route('pages.course.index');
 
     }
 
