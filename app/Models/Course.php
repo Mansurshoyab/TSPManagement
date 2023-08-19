@@ -42,4 +42,8 @@ class Course extends Model
     {
         return $this->hasMany(Student::class);
     }
+    public function fees():HasMany
+    {
+        return $this->hasMany(Fees::class);
+    }
 }

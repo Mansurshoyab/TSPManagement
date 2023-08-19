@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Fees;
 use App\Http\Requests\StoreFeesRequest;
 use App\Http\Requests\UpdateFeesRequest;
+use App\Models\Course;
+use App\Models\Student;
 
 class FeesController extends Controller
 {
@@ -13,7 +15,9 @@ class FeesController extends Controller
      */
     public function index()
     {
-        //
+        $student = Student::all();
+        $course = Course::all();
+        return view('pages.fees.index')->with(['student'=> $student, 'course'=> $course]);
     }
 
     /**
@@ -29,7 +33,8 @@ class FeesController extends Controller
      */
     public function store(StoreFeesRequest $request)
     {
-        //
+        Fees::create($request->all());
+        return back();
     }
 
     /**

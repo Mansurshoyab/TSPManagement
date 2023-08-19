@@ -4,6 +4,7 @@ use App\Http\Controllers\BottolController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FeesController;
 use App\Http\Controllers\ModiulController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TrainerController;
@@ -45,6 +46,10 @@ Route::prefix('/')->group(function () {
 
 Route::prefix('/')->group(function () {
     Route::resource('/student', StudentController::class);
+});
+
+Route::prefix('/')->group(function (){
+    Route::resource('/fees', FeesController::class);
 });
 
 

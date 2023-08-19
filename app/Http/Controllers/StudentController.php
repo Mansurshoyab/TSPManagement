@@ -65,7 +65,7 @@ class StudentController extends Controller
     {
         $course = Course::all();
         $category = Category::all();
-        return view('pages.student.edit')->with(['course' => $course, 'category' => $category]);
+        return view('pages.student.edit')->with(['course' => $course, 'category' => $category , 'student' => $student]);
     }
 
     /**
@@ -73,7 +73,19 @@ class StudentController extends Controller
      */
     public function update(UpdateStudentRequest $request, Student $student)
     {
-        //
+        $student->update([
+            'course_id' => $request->input('course_id'),
+            'first_name' => $request->input('first_name'),
+            'last_name' => $request->input('last_name'),
+            'dob' => $request->input('dob'),
+            'email' => $request->input('email'),
+            'phone' => $request->input('phone'),
+            'gender' =>$request->input('gender'),
+            'address' => $request->input('address'),
+            'admission_date' => $request->input('admission_date'),
+            'major' =>$request->input('major'),
+        ]);
+        return redirect()->route('student.index');
     }
 
     /**
