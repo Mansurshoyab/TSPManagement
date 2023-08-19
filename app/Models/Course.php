@@ -37,4 +37,9 @@ class Course extends Model
     {
         return $this->hasMany(Modiul::class);
     }
+
+    public function student(): HasMany
+    {
+        return $this->hasMany(Student::class);
+    }
 }

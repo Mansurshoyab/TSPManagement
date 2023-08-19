@@ -14,6 +14,7 @@
 
                 <div class="modal fade" id="DonorAdd" tabindex="-1" role="dialog" aria-labelledby="DonorAdd" aria-hidden="true">
                     <form action="" method="POST">
+                        @csrf
                         <div class="modal-dialog modal-lg" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -27,7 +28,11 @@
                                     <div class="row">
                                         <div class="col-sm-6 form-group">
                                             <label>Course Id :</label>
-                                            <input name="course_id" class="form-control" type="text" placeholder="Enter Your Course Id">
+                                            <select name="course_id"  class="form-control"  id="">
+                                                @foreach ($course as $course)
+                                                    <option value="{{ $course->id }}">{{ $course->course_name }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                         <div class="col-sm-6 form-group">
                                             <label>First Name : </label>
@@ -41,7 +46,7 @@
                                         </div>
                                         <div class="col-sm-6 form-group">
                                             <label>Date Of Birth : </label>
-                                            <input name="dob" class="form-control" type="dob" placeholder=" Enter Your Date Of Birth">
+                                            <input name="dob" class="form-control" type="date" placeholder=" Enter Your Date Of Birth">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -59,8 +64,8 @@
                                             <label>Gender : </label>
                                             <select class="form-control" id="gender" name="gender">
                                                 <option value="">---Select Option---</option>
-                                                <option value="male">Male</option>
-                                                <option value="female">Female</option>
+                                                <option value="0">Male</option>
+                                                <option value="1">Female</option>
                                             </select>
                                         </div>
                                         <div class="col-sm-6 form-group">
@@ -75,7 +80,11 @@
                                         </div>
                                         <div class="col-sm-6 form-group">
                                             <label>Major :</label>
-                                            <input name="major" class="form-control" type="text" placeholder="Enter Your Subject">
+                                            <select name="major" class="form-control" id="">
+                                                @foreach ($category as $category)
+                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
 
                                     </div>
@@ -100,22 +109,29 @@
                         <th class="col-md-1">DOB</th>
                         <th class="col-md-1">Email</th>
                         <th class="col-md-1">Phone</th>
-                        <th class="col-md-1">Gender</th>
                         <th class="col-md-2">address</th>
+                        <th class="col-md-1">Gender</th>
                         <th class="col-md-1">Addmission Date</th>
                         <th class="col-md-1">Major</th>
                         <th class="col-md-1">Action</th>
                       </tr>
                     </thead>
                     <tbody>
-                        {{-- @foreach ($modiuls as $modiul)
+                        @foreach ($student as $student ?-> $category)
                             <tr>
-                                <td scope="row">{{ $modiul->id }}</td>
-                                <td>{{ $modiul->course->course_name }}</td>
-                                <td>{{ $modiul->modiul_name }}</td>
-                                <td>{{ $modiul->description }}</td>
+                                <td scope="row">{{ $student->id }}</td>
+                                <td>{{ $student->course->course_name }}</td>
+                                <td>{{ $student->first_name }}</td>
+                                <td>{{ $student->last_name }}</td>
+                                <td>{{ $student->dob }}</td>
+                                <td>{{ $student->email }}</td>
+                                <td>{{ $student->phone }}</td>
+                                <td>{{ $student->address }}</td>
+                                <td>{{ $student->gender }}</td>
+                                <td>{{ $student->admission_date }}</td>
+                                <td>{{ $student->category->name }}</td>
                                 <td>
-                                    <a href="{{ route('category.show', $category->id) }}"><i class="bi bi-arrows-fullscreen text-lg p-1"></i></a>
+                                    {{-- <a href="{{ route('category.show', $category->id) }}"><i class="bi bi-arrows-fullscreen text-lg p-1"></i></a>
                                     <a href="{{ route('modiul.edit', $modiul->id) }}"><i class="bi bi-pencil-square text-lg p-1"></i></i></a>
                                     <form action="{{  route('modiul.destroy', $modiul->id) }}" method="POST">
                                         @csrf
@@ -125,9 +141,9 @@
                                         </button>
                                     </form>
                                     <a href="{{ route('modiul.destroy', $modiul->id) }}"><i class="bi bi-trash3 text-lg p-1"></i></i></a>
-                                </td>
+                                </td> --}}
                             </tr>
-                        @endforeach --}}
+                        @endforeach
                     </tbody>
                   </table>
             </table>

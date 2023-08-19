@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Student;
 use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
+use App\Models\Category;
+use App\Models\Course;
 
 class StudentController extends Controller
 {
@@ -13,7 +15,10 @@ class StudentController extends Controller
      */
     public function index()
     {
-        return view('pages.student.index');
+        $course = Course::all();
+        $category = Category::all();
+        $student = Student::all();
+        return view('pages.student.index')->with(['course'=>$course, 'category'=>$category, 'student'=>$student]);
     }
 
     /**
@@ -29,8 +34,20 @@ class StudentController extends Controller
      */
     public function store(StoreStudentRequest $request)
     {
-        //
+        dd($request);
+        Student::create($request->all());
+        return back();
     }
+
+    // public function store(StoreStudentRequest $request)
+    // {
+    //     $data = $request->all();
+
+    //     // Set the category_id based on the selected value from the form
+    //     $data['category_id'] = $request->input('category_id');
+    
+    //     Student::create($data);
+    // }
 
     /**
      * Display the specified resource.
