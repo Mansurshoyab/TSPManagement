@@ -15,10 +15,11 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $course = Course::all();
-        $category = Category::all();
-        $student = Student::all();
-        return view('pages.student.index')->with(['course'=>$course, 'category'=>$category, 'student'=>$student]);
+        $course = Course::get();
+        $student = Student::get();
+        $category = Category::get();
+        // dd($course);
+        return view('pages.student.index')->with(['course'=>$course, 'categories'=> $category, 'student'=>$student]);
     }
 
     /**
@@ -34,7 +35,7 @@ class StudentController extends Controller
      */
     public function store(StoreStudentRequest $request)
     {
-        dd($request);
+        // dd($request);
         Student::create($request->all());
         return back();
     }
@@ -45,7 +46,7 @@ class StudentController extends Controller
 
     //     // Set the category_id based on the selected value from the form
     //     $data['category_id'] = $request->input('category_id');
-    
+
     //     Student::create($data);
     // }
 
@@ -64,7 +65,7 @@ class StudentController extends Controller
     {
         $course = Course::all();
         $category = Category::all();
-        return view('pages.student.edit')->with(['course'=>$course, 'category'=>$category]);
+        return view('pages.student.edit')->with(['course' => $course, 'category' => $category]);
     }
 
     /**
