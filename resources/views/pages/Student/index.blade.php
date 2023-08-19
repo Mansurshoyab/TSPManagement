@@ -117,7 +117,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                        @foreach ($student as $student ?-> $category)
+                        @foreach ($student as $student)
                             <tr>
                                 <td scope="row">{{ $student->id }}</td>
                                 <td>{{ $student->course->course_name }}</td>
@@ -129,19 +129,20 @@
                                 <td>{{ $student->address }}</td>
                                 <td>{{ $student->gender }}</td>
                                 <td>{{ $student->admission_date }}</td>
-                                <td>{{ $student->category->name }}</td>
+                                <td>{{ $student->category ? $student->category->name : 'N/A' }}</td>
+                                {{-- <td>{{ $student->category->name }}</td> --}}
                                 <td>
-                                    {{-- <a href="{{ route('category.show', $category->id) }}"><i class="bi bi-arrows-fullscreen text-lg p-1"></i></a>
-                                    <a href="{{ route('modiul.edit', $modiul->id) }}"><i class="bi bi-pencil-square text-lg p-1"></i></i></a>
-                                    <form action="{{  route('modiul.destroy', $modiul->id) }}" method="POST">
+                                    {{-- <a href="{{ route('category.show', $category->id) }}"><i class="bi bi-arrows-fullscreen text-lg p-1"></i></a> --}}
+                                    <a href="{{ route('student.edit', $student->id) }}"><i class="bi bi-pencil-square text-lg p-1"></i></i></a>
+                                    <form action="{{  route('student.destroy', $student->id) }}" method="POST">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-danger">
                                             <i class="bi bi-trash3 text-lg"></i></i>
                                         </button>
                                     </form>
-                                    <a href="{{ route('modiul.destroy', $modiul->id) }}"><i class="bi bi-trash3 text-lg p-1"></i></i></a>
-                                </td> --}}
+                                    {{-- <a href="{{ route('modiul.destroy', $modiul->id) }}"><i class="bi bi-trash3 text-lg p-1"></i></i></a> --}}
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

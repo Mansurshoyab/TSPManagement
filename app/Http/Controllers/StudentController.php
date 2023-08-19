@@ -62,7 +62,9 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-        //
+        $course = Course::all();
+        $category = Category::all();
+        return view('pages.student.edit')->with(['course'=>$course, 'category'=>$category]);
     }
 
     /**
@@ -78,6 +80,7 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
-        //
+        $student->delete();
+        return redirect()->route('student.index');
     }
 }
