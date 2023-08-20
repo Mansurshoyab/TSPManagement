@@ -17,7 +17,8 @@ class FeesController extends Controller
     {
         $student = Student::all();
         $course = Course::all();
-        return view('pages.fees.index')->with(['student'=> $student, 'course'=> $course]);
+        $fees = Fees::all();
+        return view('pages.fees.index')->with(['student'=> $student, 'course'=> $course , 'fees'=> $fees]);
     }
 
     /**
@@ -66,6 +67,8 @@ class FeesController extends Controller
      */
     public function destroy(Fees $fees)
     {
-        //
+        dd($fees);
+        $fees->delete();
+        return redirect()->route('fees.index');
     }
 }
