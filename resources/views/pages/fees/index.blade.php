@@ -30,7 +30,7 @@
                                             <label>Student ID : </label>
                                             <select name="student_id" class="form-control" id="">
                                                 @foreach ($student as $student)
-                                                    <option value="{{ $student->id }}">{{ $student->first_name }}</option>
+                                                    <option value="{{ $student->id }}">{{ $student->last_name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -97,7 +97,7 @@
                     @foreach ($fees as $fee)
                         <tr>
                             <td scope="row">{{ $fee->id }}</td>
-                            <td>{{ $fee->student->first_name }}</td>
+                            <td>{{ $fee->student->last_name }}</td>
                             <td>{{ $fee->course->course_name }}</td>
                             <td>{{ $fee->transaction_id }}</td>
                             <td>{{ $fee->transaction_date }}</td>

@@ -14,6 +14,7 @@
 
                 <div class="modal fade" id="DonorAdd" tabindex="-1" role="dialog" aria-labelledby="DonorAdd" aria-hidden="true">
                     <form action="" method="POST">
+                        @csrf
                         <div class="modal-dialog modal-lg" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -27,17 +28,29 @@
                                     <div class="row">
                                         <div class="col-sm-6 form-group">
                                             <label>Student ID : </label>
-                                            <input name="student_id" class="form-control" type="text" placeholder="Enter Student ID">
+                                            <select name="student_id" class="form-control" id="">
+                                                @foreach ($student as $student)
+                                                    <option value="{{ $student->id }}">{{ $student->last_name }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                         <div class="col-sm-6 form-group">
                                             <label>Course ID : </label>
-                                            <input name="course_id" class="form-control" type="text" placeholder="Enter Course ID">
+                                            <select name="course_id" class="form-control" id="">
+                                                @foreach ($course as $course)
+                                                    <option value="{{ $course->id }}">{{ $course->course_name }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-6 form-group">
                                             <label>Modiul ID : </label>
-                                            <input name="modiul_id" class="form-control" type="text" placeholder="Enter Modiul ID">
+                                            <select name="modiul_id" class="form-control" id="">
+                                                @foreach ($modiul as $modiul)
+                                                    <option value="{{ $modiul->id }}">{{ $modiul->modiul_name }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                         <div class="col-sm-6 form-group">
                                             <label>Marks : </label>
@@ -53,8 +66,8 @@
                         </div>
                     </form>
                 </div>
-        
             </div>
+            
         </div>
     </div> 
 </div>

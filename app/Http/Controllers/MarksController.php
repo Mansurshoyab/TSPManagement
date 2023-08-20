@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Marks;
 use App\Http\Requests\StoreMarksRequest;
 use App\Http\Requests\UpdateMarksRequest;
+use App\Models\Course;
+use App\Models\Modiul;
+use App\Models\Student;
 
 class MarksController extends Controller
 {
@@ -13,7 +16,11 @@ class MarksController extends Controller
      */
     public function index()
     {
-        return view('pages.marks.index');
+        $student = Student::all();
+        $course = Course::all();
+        $modiul = Modiul::all();
+        $marks = Marks::all();
+        return view('pages.marks.index')->with(['student' => $student, 'course' => $course, 'modiul'=> $modiul, 'marks'=> $marks]);
     }
 
     /**
@@ -29,7 +36,8 @@ class MarksController extends Controller
      */
     public function store(StoreMarksRequest $request)
     {
-        //
+        Marks::create($request->all());
+        return back();
     }
 
     /**

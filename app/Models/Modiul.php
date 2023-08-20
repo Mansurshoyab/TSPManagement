@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Modiul extends Model
 {
@@ -19,5 +20,9 @@ class Modiul extends Model
     public function course(): BelongsTo
     {
         return $this->belongsTo(Course::class);
+    }
+    public function marks():HasMany
+    {
+        return $this->hasMany(Marks::class);
     }
 }

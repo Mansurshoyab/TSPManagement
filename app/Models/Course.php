@@ -46,4 +46,8 @@ class Course extends Model
     {
         return $this->hasMany(Fees::class);
     }
+    public function marks():HasMany
+    {
+        return $this->hasMany(Marks::class);
+    }
 }

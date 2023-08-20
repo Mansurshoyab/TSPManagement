@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
             $table->bigInteger('modiul_id')->unsigned();
             $table->foreign('modiul_id')->references('id')->on('modiuls')->onDelete('cascade');
-            $table->integer('markes');
+            $table->integer('marks');
             $table->timestamps();
         });
     }
