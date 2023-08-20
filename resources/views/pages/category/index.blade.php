@@ -46,13 +46,13 @@
 
             <div class="ibox">
                 <div class="ibox-head">
-                    <div class="ibox-title">Course Category</div>
+                    <div class="ibox-title p-5">Course Category</div>
                 </div>
                 <div class="container">
                     <table>
-                        <table class="table">
-                            <thead>
-                              <tr>
+                        <table class="table" id="myTable">
+                            <thead class="">
+                              <tr class="mt-5">
                                 <th class="col-md-2">ID</th>
                                 <th class="col-md-2">Name</th>
                                 <th class="col-md-6">Description</th>

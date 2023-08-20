@@ -18,7 +18,7 @@ class Marks extends Model
 
     public function student():BelongsTo
     {
-        return $this->belongsTo(Student::all());
+        return $this->belongsTo(Student::class);
     }
     public function course():BelongsTo
     {

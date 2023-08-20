@@ -99,7 +99,7 @@
                 </div>
             </div>
             <table>
-                <table class="table">
+                <table class="table" id="myTable">
                     <thead>
                       <tr>
                         <th class="col-md-1">ID</th>

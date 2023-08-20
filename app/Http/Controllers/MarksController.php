@@ -51,24 +51,36 @@ class MarksController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Marks $marks)
+    public function edit(Marks $mark)
     {
-        //
+        // dd($mark);
+        $student = Student::all();
+        $course = Course::all();
+        $modiul = Modiul::all();
+        return view('pages.marks.edit')->with(['student'=>$student, 'course'=>$course, 'modiul'=>$modiul, 'marks'=>$mark]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateMarksRequest $request, Marks $marks)
+    public function update(UpdateMarksRequest $request, Marks $mark)
     {
-        //
+        $mark->update([
+            'student_id' => $request->input('student_id'),
+            'course_id' => $request->input('course_id'),
+            'modiul_id' => $request->input('modiul_id'),
+            'marks' => $request->input('marks'),
+        ]);
+        return redirect()->route('marks.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Marks $marks)
+    public function destroy(Marks $mark)
     {
-        //
+        
+        $mark->delete();
+        return redirect()->route('marks.index');
     }
 }

@@ -23,6 +23,8 @@
 
     <link href="{{ asset('/') }}admin/asset/css/main.min.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+
 </head>
 
 <body id="page-top">

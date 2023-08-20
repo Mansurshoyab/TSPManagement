@@ -59,6 +59,14 @@ aria-hidden="true">
 <script src="{{ asset('/') }}admin/asset/js/demo/chart-area-demo.js"></script>
 <script src="{{ asset('/') }}admin/asset/js/demo/chart-pie-demo.js"></script>
 
+<script src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+<script>
+    $(document).ready( function () {
+    $('#myTable').DataTable();
+    } );
+</script>
+
 </body>
 
 </html>

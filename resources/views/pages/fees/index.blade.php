@@ -79,7 +79,7 @@
                     </form>
                 </div>
             </div>
-            <table class="table">
+            <table class="table" id="myTable">
                 <thead>
                   <tr>
                     <th class="col-md-0">ID</th>
