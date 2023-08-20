@@ -15,9 +15,6 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        // return view('pages.category.index')->with('categories', Category::all());
-
-        // ----------------------------------------------------------------------------------------
 
         return view('pages.category.index')->with(['categories' => Category::all()]);
     }
@@ -33,29 +30,45 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+    // public function store(StoreCategoryRequest $request)
+    // {
+    //     $this->validate($request, [
+    //         'name' => "required|string|unique:categories,name",
+    //         'description' => "required|min:10|max:255"
+    //     ],[
+    //         'name.required' => ':attribute না দিয়ে উপায় নেই গোলাম হোসেন।',
+    //         'name.min' => ':attribute কমপক্ষে ৫ অক্ষরের হতে হবে।',
+    //         'description.required' => 'ডিস্ক্রিপ্সন দিতেই হবে।',
+    //     ]);
+
+    //     $formData = $request->all();
+    //     Category::create($formData);
+
+    //     // redirect to page 
+    //     return redirect()->route('category.index')->with(['msg' => 'New category created', 'type' => 'success']);
+    // }
+
+
+
     public function store(StoreCategoryRequest $request)
-    {
+{
+    $this->validate($request, [
+        'name' => "required|string|unique:categories,name",
+        'description' => "required|min:10|max:255"
+    ]);
 
+    $formData = $request->all();
+    Category::create($formData);
 
-        // Category::create($request->all());
-        // return redirect('category');
-        // -------------------------------------------------------------------------------------
-
-        $formData = $request->all();
-
-        // save data 
-        Category::create($formData);
-
-        // redirect to page 
-        return redirect()->route('category.index')->with(['msg' => 'New category created', 'type' => 'success']);
-    }
+    // redirect to page 
+    return redirect()->route('category.index')->with(['msg' => 'New category created', 'type' => 'success']);
+}
 
     /**
      * Display the specified resource.
      */
     public function show($id)
     {
-        // dd($id);
         $category = Category::find($id);
         return view('pages.category.show')->with('categories', $category);
     }
@@ -81,19 +94,17 @@ class CategoryController extends Controller
 
     public function update(Request $request, Category $category)
     {
-        // $request->validate([
-        //     'name' => 'required|string|max:255',
-        //     'description' => 'required|string',
-        //     // Add any other validation rules you need
-        // ]);
-
+        $this->validate($request, [
+            'name' => "required|string:categories,name",
+            'description' => "required|min:10|max:255"
+        ]);
         $category->update([
             'name' => $request->input('name'),
             'description' => $request->input('description'),
         ]);
 
+
         return redirect()->route('category.index');
-        //->with('success', 'Category updated successfully.')
     }
 
 
@@ -105,17 +116,8 @@ class CategoryController extends Controller
 
     public function destroy(Category $category)
     {
-        // dd($category);
         $category->delete();
         return redirect()->route('category.index');
     }
 
-    // public function destroy(){
-    // $category = Category::find($id);
-    // if ($category->delete()) {
-    //     return redirect("category")->with("info", "Successfully Deleted category, ID: " . $category->id);
-    // }
-    // // --------------------------------------------------------------------------------------------
-    // return redirect()->route('category.index')->with(['msg' => 'Category deleted successfully', 'type' => 'success']);
-    // }
 }

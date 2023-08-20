@@ -1,5 +1,6 @@
 @extends('master')
 
+
 @section('body')
 <div class="page-content fade-in-up">
     <div class="row">
@@ -25,12 +26,22 @@
                                         <option value="C++">C++</option>
                                         <option value="PHP">PHP</option>
                                     </select>
+                                    <div class="text-danger">
+                                        @error('name')
+                                            <strong class="font-weight-bold">{{ $message }}</strong>
+                                        @enderror
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-12 form-group">
                                     <label>Course Description : </label>
                                     <textarea name="description" class="form-control" placeholder ="Course Description" id="description" cols="10"rows="5"></textarea>
+                                    <div class="text-danger">
+                                        @error('description')
+                                            <strong class="font-weight-bold">{{ $message }}</strong>
+                                        @enderror
+                                    </div>
                                 </div>
                             </div>
                             <div class="row ">
