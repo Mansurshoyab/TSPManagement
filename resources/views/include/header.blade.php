@@ -143,9 +143,9 @@
                     <span>Fees Collection</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('markes') }}">
+                <a class="nav-link" href="{{ url('marks') }}">
                     <i class="bi bi-info-square"></i>
-                    <span>Markes</span></a>
+                    <span>Marks</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ url('certificate') }}">

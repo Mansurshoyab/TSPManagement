@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FeesController;
+use App\Http\Controllers\MarksController;
 use App\Http\Controllers\ModiulController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TrainerController;
@@ -50,6 +51,10 @@ Route::prefix('/')->group(function () {
 
 Route::prefix('/')->group(function (){
     Route::resource('/fees', FeesController::class);
+});
+
+Route::prefix('/')->group(function(){
+    Route::resource('/marks',MarksController::class);
 });
 
 

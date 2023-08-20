@@ -94,20 +94,20 @@
                   </tr>
                 </thead>
                 <tbody>
-                    @foreach ($fees as $fees)
+                    @foreach ($fees as $fee)
                         <tr>
-                            <td scope="row">{{ $fees->id }}</td>
-                            <td>{{ $fees->student->first_name }}</td>
-                            <td>{{ $fees->course->course_name }}</td>
-                            <td>{{ $fees->transaction_id }}</td>
-                            <td>{{ $fees->transaction_date }}</td>
-                            <td>{{ $fees->amount }}</td>
-                            <td>{{ $fees->payment_method }}</td>
-                            <td>{{ $fees->receipt_number }}</td>
+                            <td scope="row">{{ $fee->id }}</td>
+                            <td>{{ $fee->student->first_name }}</td>
+                            <td>{{ $fee->course->course_name }}</td>
+                            <td>{{ $fee->transaction_id }}</td>
+                            <td>{{ $fee->transaction_date }}</td>
+                            <td>{{ $fee->amount }}</td>
+                            <td>{{ $fee->payment_method }}</td>
+                            <td>{{ $fee->receipt_number }}</td>
                             <td>
                                 {{-- <a href="{{ route('category.show', $category->id) }}"><i class="bi bi-arrows-fullscreen text-lg p-1"></i></a> --}}
-                                <a href="{{ route('fees.edit', $fees->id) }}"><i class="bi bi-pencil-square text-lg p-1"></i></i></a>
-                                <form action="{{  route('fees.destroy', $fees->id) }}" method="POST">
+                                <a href="{{ route('fees.edit', $fee->id) }}"><i class="bi bi-pencil-square text-lg p-1"></i></i></a>
+                                <form action="{{  route('fees.destroy', $fee->id) }}" method="POST">
                                     @csrf
                                     @method('delete')
                                     <button type="submit" class="btn btn-danger">

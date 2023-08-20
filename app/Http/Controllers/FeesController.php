@@ -17,8 +17,8 @@ class FeesController extends Controller
     {
         $student = Student::all();
         $course = Course::all();
-        $fees = Fees::all();
-        return view('pages.fees.index')->with(['student'=> $student, 'course'=> $course , 'fees'=> $fees]);
+        $fee = Fees::all();
+        return view('pages.fees.index')->with(['student'=> $student, 'course'=> $course , 'fees'=> $fee]);
     }
 
     /**
@@ -41,7 +41,7 @@ class FeesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Fees $fees)
+    public function show(Fees $fee)
     {
         //
     }
@@ -49,26 +49,38 @@ class FeesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Fees $fees)
+    public function edit(Fees $fee)
     {
-        //
+        // dd($fee);
+        $course = Course::all();
+        $student = Student::all();
+        return view('pages.fees.edit')->with(['course'=> $course, 'student'=>$student, 'fees'=>$fee]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateFeesRequest $request, Fees $fees)
+    public function update(UpdateFeesRequest $request, Fees $fee)
     {
-        //
+        $fee->update([
+            'student_id'=> $request->input('student_id'),
+            'course_id' => $request->input('course_id'),
+            'transaction_id' => $request->input('transaction_id'),
+            'transaction_date' => $request->input('transaction_date'),
+            'amount' => $request->input('amount'),
+            'payment_method' => $request->input('payment_method'),
+            'receipt_number' => $request->input('receipt_number'),
+        ]);
+        return redirect()->route('fees.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Fees $fees)
+    public function destroy(Fees $fee)
     {
-        dd($fees);
-        $fees->delete();
+        
+        $fee->delete();
         return redirect()->route('fees.index');
     }
 }
