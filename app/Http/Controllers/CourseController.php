@@ -15,13 +15,11 @@ class CourseController extends Controller
      * Display a listing of the resource.
      */
 
-
     public function index()
     {
         $courses = Course::all();
         $categories = Category::all();
         $trainers = Trainer::all();
-        // return view('pages.course.index', compact('courses', 'categories', 'trainers'));
         return view('pages.course.index')->with(['categories' => $categories, 'trainers' => $trainers, 'courses' => $courses]);
     }
 
@@ -39,7 +37,18 @@ class CourseController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request);
+        $this->validate($request,[
+            'course_name' => 'required|string|max:12',
+            'category_id' => 'required|string|max:12',
+            'trainer_id' => 'required',
+            'description' => 'required|string|max:255',
+            'course_duretion' => 'required|string|max:20',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date',
+            'course_fee' => 'required|max:25',
+            'location' => 'required|string|max:100',
+        ]);
+
         Course::create($request->all());
         return back();
     }
@@ -58,7 +67,7 @@ class CourseController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for  editing the specified resource.
      */
     public function edit(Course $course)
     {
@@ -74,6 +83,17 @@ class CourseController extends Controller
      */
     public function update(UpdateCourseRequest $request, Course $course)
     {
+        $this->validate($request,[
+            'course_name' => 'required|string|max:12',
+            'category_id' => 'required|string|max:12',
+            'trainer_id' => 'required',
+            'description' => 'required|string|max:255',
+            'course_duretion' => 'required|string|max:20',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date',
+            'course_fee' => 'required|max:25',
+            'location' => 'required|string|max:100',
+        ]);
 
         $course->update([
             'course_name' => $request->input('course_name'),

@@ -18,6 +18,11 @@
                                 <div class="col-sm-6 form-group">
                                     <label>Course Name : </label>
                                     <input name="course_name" class="form-control" type="text" placeholder="Course Name">
+                                    <div class="text-danger">
+                                        @error('course_name')
+                                            <strong class="font-weight-bold">{{ $message }}</strong>
+                                        @enderror
+                                    </div>
                                 </div>
                                 <div class="col-sm-6 form-group">
                                     <label>Course category : </label>
@@ -26,12 +31,22 @@
                                         <option value="{{ $category->id }}">{{ $category->name  }}</option>
                                         @endforeach
                                     </select>
+                                    <div class="text-danger">
+                                        @error('category_id')
+                                            <strong class="font-weight-bold">{{ $message }}</strong>
+                                        @enderror
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-12 form-group">
                                     <label>Course Description : </label>
                                     <textarea name="description" class="form-control" placeholder ="Course Description" id="description" cols="10"rows="5"></textarea>
+                                    <div class="text-danger">
+                                        @error('description')
+                                            <strong class="font-weight-bold">{{ $message }}</strong>
+                                        @enderror
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
@@ -42,30 +57,60 @@
                                         <option value="{{ $trainer->id }}"> {{ $trainer->first_name }} {{ $trainer->last_name }} </option>
                                         @endforeach
                                     </select>
+                                    <div class="text-danger">
+                                        @error('trainer_id')
+                                            <strong class="font-weight-bold">{{ $message }}</strong>
+                                        @enderror
+                                    </div>
                                 </div>
                                 <div class="col-sm-6 form-group">
                                     <label>Course Duretion : </label>
                                     <input name="course_duretion" class="form-control" type="text" placeholder="Course Duretion">
+                                    <div class="text-danger">
+                                        @error('course_duretion')
+                                            <strong class="font-weight-bold">{{ $message }}</strong>
+                                        @enderror
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-6 form-group">
                                     <label>Start Date : </label>
                                     <input name="start_date" class="form-control" type="date" placeholder="Course Duretion">
+                                    <div class="text-danger">
+                                        @error('start_date')
+                                            <strong class="font-weight-bold">{{ $message }}</strong>
+                                        @enderror
+                                    </div>
                                 </div>
                                 <div class="col-sm-6 form-group">
                                     <label>Course Fee : </label>
                                     <input name="course_fee" class="form-control" type="text" placeholder="Course Fees">
+                                    <div class="text-danger">
+                                        @error('course_fee')
+                                            <strong class="font-weight-bold">{{ $message }}</strong>
+                                        @enderror
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-6 form-group">
                                     <label>End Date :</label>
                                     <input name="end_date" class="form-control" type="date" placeholder="End Date">
+                                    <div class="text-danger">
+                                        @error('end_date')
+                                            <strong class="font-weight-bold">{{ $message }}</strong>
+                                        @enderror
+                                    </div>
                                 </div>
                                 <div class="col-sm-6 form-group">
                                     <label>Location :</label>
                                     <textarea name="location" class="form-control" placeholder ="Location" id="" cols="2"rows="1"></textarea>
+                                    <div class="text-danger">
+                                        @error('location')
+                                            <strong class="font-weight-bold">{{ $message }}</strong>
+                                        @enderror
+                                    </div>
                                 </div>
                             </div>
                             <div class="row ">
@@ -73,7 +118,7 @@
                                     <input type="submit" value="Add Course" class="btn btn-primary">
                                 </div>
                             </div>
-                            <!--form body end -->
+                            <!--form  body end -->
                         </div>
                     </form>
                 </div>

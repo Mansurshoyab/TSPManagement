@@ -18,36 +18,71 @@
                                 <div class="col-sm-6 form-group">
                                     <label>First Name</label>
                                     <input name="first_name" value="{{ $trainer->first_name }}" class="form-control"type="text"placeholder="Enter Your First Name">
+                                    <div class="text-danger">
+                                        @error('first_name')
+                                            <strong class="font-weight-bold">{{ $message }}</strong>
+                                        @enderror
+                                    </div>
                                 </div>
                                 <div class="col-sm-6 form-group">
                                     <label>Last Name : </label>
                                     <input name="last_name" value="{{ $trainer->last_name }}" class="form-control"type="text"placeholder="Enter Your Last Name">
+                                    <div class="text-danger">
+                                        @error('last_name')
+                                            <strong class="font-weight-bold">{{ $message }}</strong>
+                                        @enderror
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-6 form-group">
                                     <label>Date Of Birth : </label>
                                     <input name="dob" value="{{ $trainer->dob }}" class="form-control" type="date"placeholder="Enter Your Date Of Birth">
+                                    <div class="text-danger">
+                                        @error('dob')
+                                            <strong class="font-weight-bold">{{ $message }}</strong>
+                                        @enderror
+                                    </div>
                                 </div>
                                 <div class="col-sm-6 form-group">
                                     <label>Email : </label>
                                     <input name="email" value="{{ $trainer->email }}" class="form-control"type="email"placeholder="Enter Your Email">
+                                    <div class="text-danger">
+                                        @error('email')
+                                            <strong class="font-weight-bold">{{ $message }}</strong>
+                                        @enderror
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-6 form-group">
                                     <label>Phone : </label>
                                     <input name="phone" value="{{ $trainer->phone }}"  class="form-control"type="text"placeholder="Enter Your Number">
+                                    <div class="text-danger">
+                                        @error('phone')
+                                            <strong class="font-weight-bold">{{ $message }}</strong>
+                                        @enderror
+                                    </div>
                                 </div>
                                 <div class="col-sm-6 form-group">
                                     <label>Experience : </label>
                                     <input name="experience" value="{{ $trainer->experience }}"class="form-control"type="text"placeholder="Enter Your Experience">
+                                    <div class="text-danger">
+                                        @error('experience')
+                                            <strong class="font-weight-bold">{{ $message }}</strong>
+                                        @enderror
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-6 form-group">
                                     <label>Specialization :</label>
                                     <input name="specialization" value="{{ $trainer->specialization }}" class="form-control"type="text"placeholder="Enter Your Specialization">
+                                    <div class="text-danger">
+                                        @error('specialization')
+                                            <strong class="font-weight-bold">{{ $message }}</strong>
+                                        @enderror
+                                    </div>
                                 </div>
                                 <div class="col-sm-6 form-group">
                                     <label>Status :</label>
@@ -56,12 +91,22 @@
                                         <option value="1" {{ $trainer->status === 'active' ? 'selected' : '' }}>Active</option>
                                         <option value="2"{{ $trainer->status === 'inactive' ? 'selected' : '' }}>Inactive</option>
                                     </select>
+                                    <div class="text-danger">
+                                        @error('status')
+                                            <strong class="font-weight-bold">{{ $message }}</strong>
+                                        @enderror
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-12 form-group">
                                     <label>address :</label>
                                     <textarea name="address" class="form-control"placeholder="address" id="" cols="2"rows="1">{{ $trainer->address }}</textarea>
+                                    <div class="text-danger">
+                                        @error('address')
+                                            <strong class="font-weight-bold">{{ $message }}</strong>
+                                        @enderror
+                                    </div>
                                 </div>
                             </div>
                             <div class="row ">

@@ -30,11 +30,21 @@ class TrainerController extends Controller
      */
     public function store(StoreTrainerRequest $request)
     {
-        // dd($request);
+        $this->validate($request,[
+            'first_name' => 'required|string|max:12',
+            'last_name' => 'required|string|max:12',
+            'dob' => 'required|date',
+            'email' => 'required|email',
+            'phone' => 'required|string|max:20',
+            'address' => 'required|string|max:50',
+            'specialization' => 'required|string|max:25',
+            'experience' => 'required|string|min:0',
+            'status' => 'required',
+        ]);
+
         $trainer = $request->all();
         Trainer::create($trainer);
         return view('pages.trainer.index')->with(['trainers' => Trainer::all()]);
-        // dd($trainer)
     }
 
     /**
@@ -42,7 +52,7 @@ class TrainerController extends Controller
      */
     public function show(Trainer $trainer)
     {
-        // dd($trainer);
+        //
     }
 
     /**
@@ -61,6 +71,21 @@ class TrainerController extends Controller
      */
     public function update(UpdateTrainerRequest $request, Trainer $trainer)
     {
+        
+        $this->validate($request,[
+            'first_name' => 'required|string|max:12',
+            'last_name' => 'required|string|max:12',
+            'dob' => 'required|date',
+            'email' => 'required|email',
+            'phone' => 'required|string|max:20',
+            'address' => 'required|string|max:50',
+            'specialization' => 'required|string|max:25',
+            'experience' => 'required|string|min:0',
+            'status' => 'required',
+        ]);
+
+        
+
         $trainer->update([
             'first_name' => $request->input('first_name'),
             'last_name' => $request->input('last_name'),
