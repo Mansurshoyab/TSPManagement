@@ -26,10 +26,12 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', [DashboardController::class, ('dashboard')]);
+Route::prefix('/')->group(function(){
+
+    Route::resource('/',DashboardController::class);
+});
 
 Route::prefix('/')->group(function () {
-    Route::resource('bottol', BottolController::class);
     Route::resource('category', CategoryController::class);
 });
 
