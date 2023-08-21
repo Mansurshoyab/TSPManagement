@@ -26,30 +26,60 @@
                                                 <option value="{{ $course->id }}">{{ $course->course_name }}</option>
                                             @endforeach
                                         </select>
+                                        <div class="text-danger">
+                                            @error('course_id')
+                                                <strong class="font-weight-bold">{{ $message }}</strong>
+                                            @enderror
+                                        </div>
                                     </div>
                                     <div class="col-sm-6 form-group">
                                         <label>First Name : </label>
                                         <input name="first_name" value="{{ $student->first_name }}" class="form-control" type="text" placeholder="Enter Your First Name">
+                                        <div class="text-danger">
+                                            @error('first_name')
+                                                <strong class="font-weight-bold">{{ $message }}</strong>
+                                            @enderror
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-6 form-group">
                                         <label>Last Name : </label>
                                         <input name="last_name" value="{{ $student->last_name }}"  class="form-control" type="text" placeholder="Enter Your Last Name">
+                                        <div class="text-danger">
+                                            @error('last_name')
+                                                <strong class="font-weight-bold">{{ $message }}</strong>
+                                            @enderror
+                                        </div>
                                     </div>
                                     <div class="col-sm-6 form-group">
                                         <label>Date Of Birth : </label>
                                         <input name="dob" value="{{ $student->dob }}" class="form-control" type="date" placeholder=" Enter Your Date Of Birth">
+                                        <div class="text-danger">
+                                            @error('dob')
+                                                <strong class="font-weight-bold">{{ $message }}</strong>
+                                            @enderror
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-6 form-group">
                                         <label>Email : </label>
                                         <input name="email" value="{{ $student->email }}" class="form-control" type="email" placeholder="Enter Your Email">
+                                        <div class="text-danger">
+                                            @error('email')
+                                                <strong class="font-weight-bold">{{ $message }}</strong>
+                                            @enderror
+                                        </div>
                                     </div>
                                     <div class="col-sm-6 form-group">
                                         <label>Phone : </label>
                                         <input name="phone" value="{{ $student->phone }}" class="form-control" type="text" placeholder="Enter Your Number">
+                                        <div class="text-danger">
+                                            @error('phone')
+                                                <strong class="font-weight-bold">{{ $message }}</strong>
+                                            @enderror
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -60,16 +90,31 @@
                                             <option value="0">Male</option>
                                             <option value="1">Female</option>
                                         </select>
+                                        <div class="text-danger">
+                                            @error('gender')
+                                                <strong class="font-weight-bold">{{ $message }}</strong>
+                                            @enderror
+                                        </div>
                                     </div>
                                     <div class="col-sm-6 form-group">
                                         <label>address : </label>
                                         <textarea name="address" class="form-control" placeholder ="address" id="" cols="2"rows="1">{{ $student->address }}</textarea>
+                                        <div class="text-danger">
+                                            @error('address')
+                                                <strong class="font-weight-bold">{{ $message }}</strong>
+                                            @enderror
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-6 form-group">
                                         <label>Addmission Date :</label>
                                         <input name="admission_date" value="{{ $student->admission_date }}" class="form-control" type="date" placeholder="Enter Your Addmimite Date">
+                                        <div class="text-danger">
+                                            @error('admission_date')
+                                                <strong class="font-weight-bold">{{ $message }}</strong>
+                                            @enderror
+                                        </div>
                                     </div>
                                     <div class="col-sm-6 form-group">
                                         <label>Major :</label>
@@ -78,6 +123,11 @@
                                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                                             @endforeach
                                         </select>
+                                        <div class="text-danger">
+                                            @error('major')
+                                                <strong class="font-weight-bold">{{ $message }}</strong>
+                                            @enderror
+                                        </div>
                                     </div>
                                 </div>
                                 <!--form body end -->

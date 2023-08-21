@@ -18,7 +18,6 @@ class StudentController extends Controller
         $course = Course::get();
         $student = Student::get();
         $category = Category::get();
-        // dd($course);
         return view('pages.student.index')->with(['course'=>$course, 'categories'=> $category, 'student'=>$student]);
     }
 
@@ -35,20 +34,22 @@ class StudentController extends Controller
      */
     public function store(StoreStudentRequest $request)
     {
-        // dd($request);
+        $this->validate($request,[
+            'course_id' => 'required|string|max:12',
+            'first_name' => 'required|string|max:12',
+            'last_name' => 'required|string|max:12',
+            'dob' => 'required|date',
+            'email' => 'required|email',
+            'phone' => 'required|string|max:20',
+            'address' => 'required|string|max:50',
+            'gender' => 'required',
+            'admission_date' => 'required|date',
+            'major' => 'required|string|min:0',
+        ]);
+
         Student::create($request->all());
         return back();
     }
-
-    // public function store(StoreStudentRequest $request)
-    // {
-    //     $data = $request->all();
-
-    //     // Set the category_id based on the selected value from the form
-    //     $data['category_id'] = $request->input('category_id');
-
-    //     Student::create($data);
-    // }
 
     /**
      * Display the specified resource.
@@ -73,6 +74,19 @@ class StudentController extends Controller
      */
     public function update(UpdateStudentRequest $request, Student $student)
     {
+        $this->validate($request,[
+            'course_id' => 'required|string|max:12',
+            'first_name' => 'required|string|max:12',
+            'last_name' => 'required|string|max:12',
+            'dob' => 'required|date',
+            'email' => 'required|email',
+            'phone' => 'required|string|max:20',
+            'address' => 'required|string|max:50',
+            'gender' => 'required',
+            'admission_date' => 'required|date',
+            'major' => 'required|string|min:0',
+        ]);
+        
         $student->update([
             'course_id' => $request->input('course_id'),
             'first_name' => $request->input('first_name'),
