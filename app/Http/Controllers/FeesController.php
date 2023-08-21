@@ -34,6 +34,16 @@ class FeesController extends Controller
      */
     public function store(StoreFeesRequest $request)
     {
+        $this->validate($request,[
+            'student_id' => 'required|string|max:12',
+            'course_id' => 'required|string|max:12',
+            'transaction_id' => 'required|string|max:20',
+            'transaction_date' => 'required|date',
+            'amount' => 'required|integer',
+            'payment_method' => 'required|string|max:20',
+            'receipt_number' => 'required|string|max:50',
+        ]);
+        
         Fees::create($request->all());
         return back();
     }
@@ -62,6 +72,16 @@ class FeesController extends Controller
      */
     public function update(UpdateFeesRequest $request, Fees $fee)
     {
+        $this->validate($request,[
+            'student_id' => 'required|string|max:12',
+            'course_id' => 'required|string|max:12',
+            'transaction_id' => 'required|string|max:20',
+            'transaction_date' => 'required|date',
+            'amount' => 'required|integer',
+            'payment_method' => 'required|string|max:20',
+            'receipt_number' => 'required|string|max:50',
+        ]);
+        
         $fee->update([
             'student_id'=> $request->input('student_id'),
             'course_id' => $request->input('course_id'),
