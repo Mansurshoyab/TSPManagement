@@ -21,18 +21,32 @@
                                         @foreach ($course as $course)
                                             <option value="{{ $course->id }}">{{ $course->course_name }}</option>
                                         @endforeach
-                                        
                                     </select>
+                                    <div class="text-danger">
+                                        @error('course_id')
+                                            <strong class="font-weight-bold">{{ $message }}</strong>
+                                        @enderror
+                                    </div>
                                 </div>
                                 <div class="col-sm-6 form-group">
                                     <label>Modiul Name : </label>
                                     <input name="modiul_name" class="form-control" type="text" placeholder="Modiul Name">
+                                    <div class="text-danger">
+                                        @error('modiul_name')
+                                            <strong class="font-weight-bold">{{ $message }}</strong>
+                                        @enderror
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-12 form-group">
                                     <label>Modiul Description : </label>
                                     <textarea name="description" class="form-control" placeholder ="Modiul Description" id="description" cols="10"rows="5"></textarea>
+                                    <div class="description">
+                                        @error('modiul_name')
+                                            <strong class="font-weight-bold">{{ $message }}</strong>
+                                        @enderror
+                                    </div>
                                 </div>
                             </div>
                             <div class="row ">

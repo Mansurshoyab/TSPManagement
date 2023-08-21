@@ -10,9 +10,6 @@ use App\Models\Course;
 class ModiulController extends Controller
 {
 
-    //  public function modiul(){
-    //     return view('pages.modiul.index');
-    //  }
     /**
      * Display a listing of the resource.
      */
@@ -36,7 +33,12 @@ class ModiulController extends Controller
      */
     public function store(StoreModiulRequest $request)
     {
-        // dd($request);
+        $this->validate($request,[
+            'course_id' => 'required|string|max:12',
+            'modiul_name' => 'required|string|max:12',
+            'description' => 'required|string|max:255',
+        ]);
+
         Modiul::create($request->all());
         return redirect()->route('modiul.index')->with(['msg' => 'New category created', 'type' => 'success']);
     }
@@ -66,6 +68,12 @@ class ModiulController extends Controller
      */
     public function update(UpdateModiulRequest $request, Modiul $modiul)
     {
+        $this->validate($request,[
+            'course_id' => 'required|string|max:12',
+            'modiul_name' => 'required|string|max:12',
+            'description' => 'required|string|max:255',
+        ]);
+        
         $modiul->update([
             'course_id' => $request->input('course_id'),
             'modiul_name' => $request->input('modiul_name'),
