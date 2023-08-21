@@ -23,6 +23,11 @@
                                             <option value="{{ $student->id }}"{{ $student->id == $student->id ? 'selected' : '' }}>{{ $student->last_name }}</option>
                                         @endforeach
                                     </select>
+                                    <div class="text-danger">
+                                        @error('student_id')
+                                            <strong class="">{{ $message }}</strong>
+                                        @enderror
+                                    </div>
                                 </div>
                                 <div class="col-sm-6 form-group">
                                     <label>Course ID : </label>
@@ -31,6 +36,11 @@
                                             <option value="{{ $course->id }}"{{ $course->id == $course->id ? 'selected' : '' }}>{{ $course->course_name }}</option>
                                         @endforeach
                                     </select>
+                                    <div class="text-danger">
+                                        @error('course_id')
+                                            <strong class="">{{ $message }}</strong>
+                                        @enderror
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
@@ -41,10 +51,20 @@
                                             <option value="{{ $modiul->id }}" {{ $modiul->id == $modiul->id ? 'selected' : '' }}>{{ $modiul->modiul_name }}</option>
                                         @endforeach
                                     </select>
+                                    <div class="text-danger">
+                                        @error('modiul_id')
+                                            <strong class="">{{ $message }}</strong>
+                                        @enderror
+                                    </div>
                                 </div>
                                 <div class="col-sm-6 form-group">
                                     <label>Marks : </label>
                                     <input name="marks" value="{{ $marks->marks }}" class="form-control" type="text" placeholder="Enter Merker">
+                                    <div class="text-danger">
+                                        @error('marks')
+                                            <strong class="">{{ $message }}</strong>
+                                        @enderror
+                                    </div>
                                 </div>
                             </div>
                             <!--form body end -->

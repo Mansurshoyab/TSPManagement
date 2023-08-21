@@ -33,6 +33,11 @@
                                                     <option value="{{ $student->id }}">{{ $student->last_name }}</option>
                                                 @endforeach
                                             </select>
+                                            <div class="text-danger">
+                                                @error('student_id')
+                                                    <strong class="">{{ $message }}</strong>
+                                                @enderror
+                                            </div>
                                         </div>
                                         <div class="col-sm-6 form-group">
                                             <label>Course ID : </label>
@@ -40,6 +45,11 @@
                                                 @foreach ($course as $course)
                                                     <option value="{{ $course->id }}">{{ $course->course_name }}</option>
                                                 @endforeach
+                                                <div class="text-danger">
+                                                    @error('course_id')
+                                                        <strong class="">{{ $message }}</strong>
+                                                    @enderror
+                                                </div>
                                             </select>
                                         </div>
                                     </div>
@@ -51,10 +61,20 @@
                                                     <option value="{{ $modiul->id }}">{{ $modiul->modiul_name }}</option>
                                                 @endforeach
                                             </select>
+                                            <div class="text-danger">
+                                                @error('modiul_id')
+                                                    <strong class="">{{ $message }}</strong>
+                                                @enderror
+                                            </div>
                                         </div>
                                         <div class="col-sm-6 form-group">
                                             <label>Marks : </label>
                                             <input name="marks" class="form-control" type="text" placeholder="Enter Merker">
+                                            <div class="text-danger">
+                                                @error('marks')
+                                                    <strong class="">{{ $message }}</strong>
+                                                @enderror
+                                            </div>
                                         </div>
                                     </div>
                                     <!--form body end -->

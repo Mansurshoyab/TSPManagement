@@ -36,6 +36,12 @@ class MarksController extends Controller
      */
     public function store(StoreMarksRequest $request)
     {
+        $this->validate($request,[
+            'student_id' => 'required',
+            'course_id' => 'required',
+            'modiul_id' => 'required',
+            'marks' => 'required|integer',
+        ]);
         Marks::create($request->all());
         return back();
     }
@@ -65,6 +71,13 @@ class MarksController extends Controller
      */
     public function update(UpdateMarksRequest $request, Marks $mark)
     {
+        $this->validate($request,[
+            'student_id' => 'required',
+            'course_id' => 'required',
+            'modiul_id' => 'required',
+            'marks' => 'required|integer',
+        ]);
+        
         $mark->update([
             'student_id' => $request->input('student_id'),
             'course_id' => $request->input('course_id'),
