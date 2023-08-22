@@ -34,8 +34,8 @@ class ModiulController extends Controller
     public function store(StoreModiulRequest $request)
     {
         $this->validate($request,[
-            'course_id' => 'required|string|max:12',
-            'modiul_name' => 'required|string|max:12',
+            'course_id' => 'required|string|max:25',
+            'modiul_name' => 'required|string|max:50',
             'description' => 'required|string|max:255',
         ]);
 
@@ -70,7 +70,7 @@ class ModiulController extends Controller
     {
         $this->validate($request,[
             'course_id' => 'required|string|max:12',
-            'modiul_name' => 'required|string|max:12',
+            'modiul_name' => 'required|string|max:50',
             'description' => 'required|string|max:255',
         ]);
         

@@ -38,8 +38,8 @@ class CourseController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'course_name' => 'required|string|max:12',
-            'category_id' => 'required|string|max:12',
+            'course_name' => 'required|string|max:50',
+            'category_id' => 'required|string|max:50',
             'trainer_id' => 'required',
             'description' => 'required|string|max:255',
             'course_duretion' => 'required|string|max:20',
@@ -84,8 +84,8 @@ class CourseController extends Controller
     public function update(UpdateCourseRequest $request, Course $course)
     {
         $this->validate($request,[
-            'course_name' => 'required|string|max:12',
-            'category_id' => 'required|string|max:12',
+            'course_name' => 'required|string|max:25',
+            'category_id' => 'required|string|max:25',
             'trainer_id' => 'required',
             'description' => 'required|string|max:255',
             'course_duretion' => 'required|string|max:20',

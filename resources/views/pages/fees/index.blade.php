@@ -27,7 +27,7 @@
                                     <!--form body start here-->
                                     <div class="row">
                                         <div class="col-sm-6 form-group">
-                                            <label>Student ID : </label>
+                                            <label>Student Name : </label>
                                             <select name="student_id" class="form-control" id="">
                                                 @foreach ($student as $student)
                                                     <option value="{{ $student->id }}">{{ $student->last_name }}</option>
@@ -40,7 +40,7 @@
                                             </div>
                                         </div>
                                         <div class="col-sm-6 form-group">
-                                            <label>Course ID : </label>
+                                            <label>Course Name : </label>
                                             <select name="course_id"  class="form-control" id="">
                                                 @foreach ($course as $course)
                                                     <option value="{{ $course->id }}">{{ $course->course_name }}</option>
