@@ -15,16 +15,10 @@ class DashboardController extends Controller
 
     public function index()
     {
-       $students = Student::count();
-       $trainer = Trainer::count();
-       $course = Course::count();
+        $students = Student::count();
+        $trainer = Trainer::count();
+        $course = Course::count();
 
-       return view('dashboard')->with(['students'=> $students, 'trainer' => $trainer, 'course'=>$course]);
+        return view('dashboard2')->with(['students' => $students, 'trainer' => $trainer, 'course' => $course]);
     }
 }
-
-
-
-
-
-

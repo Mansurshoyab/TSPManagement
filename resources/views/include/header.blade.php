@@ -36,7 +36,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ url('/') }}">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('admin.dashboard') }}">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -48,7 +48,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="{{ url('/') }}">
+                <a class="nav-link" href="{{ route('admin.dashboard') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -70,9 +70,9 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Course:</h6>
-                        <a class="collapse-item" href="{{ url('course') }}">Course Information</a>
-                        <a class="collapse-item" href="{{ url('category') }}">Course Category</a>
-                        <a class="collapse-item" href="{{ url('modiul') }}">Course Modiul</a>
+                        <a class="collapse-item" href="{{ route('course.index') }}">Course Information</a>
+                        <a class="collapse-item" href="{{ route('category.index') }}">Course Category</a>
+                        <a class="collapse-item" href="{{ route('modiul.index') }}">Course Modiul</a>
                     </div>
                 </div>
             </li>
@@ -127,30 +127,30 @@
             </li> --}}
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('trainer') }}">
+                <a class="nav-link" href="{{ route('trainer.index') }}">
                     <i class="bi bi-person-video"></i>
                     <span>Trainer Information</span></a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('student') }}">
+                <a class="nav-link" href="{{ route('student.index') }}">
                     <i class="bi bi-person-circle"></i>
                     <span>Student Information</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('fees') }}">
+                <a class="nav-link" href="{{ route('fees.index') }}">
                     <i class="bi bi-currency-dollar"></i>
                     <span>Fees Collection</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('marks') }}">
+                <a class="nav-link" href="{{ route('marks.index') }}">
                     <i class="bi bi-info-square"></i>
                     <span>Marks</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('certificate') }}">
+                <a class="nav-link" href="javascript:void(0)">
                     <i class="bi bi-info-square-fill"></i>
                     <span>Certificate</span></a>
             </li>
@@ -371,10 +371,15 @@
                                     Activity Log
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
-                                </a>
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal"
+                                        onclick="event.preventDefault(); this.closest('form').submit();" >
+                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        {{ __('Log Out') }}
+                                    </a>
+                                </form>
+                                
                             </div>
                         </li>
 

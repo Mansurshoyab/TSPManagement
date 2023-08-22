@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BottolController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CourseController;
@@ -22,43 +23,55 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/welcome', function () {
-//     return view('welcome');
+Route::get('/', function () {
+    return view('welcome');
+});
+
+// Route::prefix('/')->group(function () {
+
+//     Route::resource('/', DashboardController::class);
 // });
 
-Route::prefix('/')->group(function(){
+// Route::prefix('/')->group(function () {
+//     Route::resource('category', CategoryController::class);
+// });
 
-    Route::resource('/',DashboardController::class);
-});
+// Route::prefix('/')->group(function () {
+//     Route::resource('/trainer', TrainerController::class);
+// });
 
-Route::prefix('/')->group(function () {
+// Route::prefix('/')->group(function () {
+//     Route::resource('/course', CourseController::class);
+// });
+
+// Route::prefix('/')->group(function () {
+//     Route::resource('/modiul', ModiulController::class);
+// });
+
+// Route::prefix('/')->group(function () {
+//     Route::resource('/student', StudentController::class);
+// });
+
+// Route::prefix('/')->group(function () {
+//     Route::resource('/fees', FeesController::class);
+// });
+
+// Route::prefix('/')->group(function () {
+//     Route::resource('/marks', MarksController::class);
+// });
+
+
+Route::middleware('auth')->prefix('admin')->group(function () {
+    // Route::resource('/', DashboardController::class);
+    Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::resource('category', CategoryController::class);
+    Route::resource('trainer', TrainerController::class);
+    Route::resource('course', CourseController::class);
+    Route::resource('modiul', ModiulController::class);
+    Route::resource('student', StudentController::class);
+    Route::resource('fees', FeesController::class);
+    Route::resource('marks', MarksController::class);
 });
-
-Route::prefix('/')->group(function () {
-    Route::resource('/trainer', TrainerController::class);
-});
-
-Route::prefix('/')->group(function () {
-    Route::resource('/course', CourseController::class);
-});
-
-Route::prefix('/')->group(function () {
-    Route::resource('/modiul', ModiulController::class);
-});
-
-Route::prefix('/')->group(function () {
-    Route::resource('/student', StudentController::class);
-});
-
-Route::prefix('/')->group(function (){
-    Route::resource('/fees', FeesController::class);
-});
-
-Route::prefix('/')->group(function(){
-    Route::resource('/marks',MarksController::class);
-});
-
 
 
 
@@ -84,3 +97,16 @@ Route::prefix('/')->group(function(){
 // Route::get('/course_modiul', function () {
 //     return view('course_modiul');
 // });
+
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__ . '/auth.php';
