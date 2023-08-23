@@ -1,6 +1,7 @@
 @extends('master')
 
 @section('body')
+
 <div class="page-content fade-in-up">
     <div class="row">
         <div class="col-md-12">
@@ -114,7 +115,7 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-sm-6 form-group">
+                                        <div class="col-sm-4 form-group">
                                             <label>Addmission Date :</label>
                                             <input name="admission_date" class="form-control" type="date" placeholder="Enter Your Addmimite Date">
                                             <div class="text-danger">
@@ -123,7 +124,19 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-sm-6 form-group">
+                                        <div class="col-sm-4 form-group">
+                                            <label>Payment Status :</label>
+                                                <select name="status" class="form-control" id="">
+                                                    <option value="due">Due</option>
+                                                    <option value="paid">Paid</option>
+                                                </select>
+                                            <div class="text-danger">
+                                                @error('status')
+                                                    <strong class="font-weight-bold">{{ $message }}</strong>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4 form-group">
                                             <label>Major :</label>
                                             <select name="major" class="form-control" id="">
                                                 @foreach ($categories as $category)
@@ -148,21 +161,18 @@
                     </form>
                 </div>
             </div>
+            <div class="container">
             <table>
                 <table class="table" id="myTable">
                     <thead>
                       <tr>
-                        <th class="col-md-1">ID</th>
-                        <th class="col-md-1">Course Id</th>
+                        <th class="col-md-">ID</th>
+                        <th class="col-md-2">Course Id</th>
                         <th class="col-md-2">First Name</th>
                         <th class="col-md-2">Last Name</th>
-                        <th class="col-md-1">DOB</th>
                         <th class="col-md-1">Email</th>
                         <th class="col-md-1">Phone</th>
-                        <th class="col-md-2">address</th>
-                        <th class="col-md-1">Gender</th>
-                        <th class="col-md-1">Addmission Date</th>
-                        <th class="col-md-1">Status</th>
+                        <th class="col-md-2">Payment Status</th>
                         <th class="col-md-1">Major</th>
                         <th class="col-md-1">Action</th>
                       </tr>
@@ -174,16 +184,12 @@
                                 <td>{{ $student->course->course_name }}</td>
                                 <td>{{ $student->first_name }}</td>
                                 <td>{{ $student->last_name }}</td>
-                                <td>{{ $student->dob }}</td>
                                 <td>{{ $student->email }}</td>
                                 <td>{{ $student->phone }}</td>
-                                <td>{{ $student->address }}</td>
-                                <td>{{ $student->gender }}</td>
-                                <td>{{ $student->admission_date }}</td>
                                 @if ($student->status == 'due')
-                                <td class="text-danger">{{ $student->status }}</td>
+                                <td class="text-danger text-capitalize">{{ $student->status }}</td>
                                     @else
-                                <td class="text-primary">{{ $student->status }}</td>
+                                <td class="text-primary text-capitalize">{{ $student->status }}</td>
                                 @endif
 
                                 <td>
@@ -205,12 +211,13 @@
                                 <td>
                                     {{-- <a href="{{ route('category.show', $category->id) }}"><i class="bi bi-arrows-fullscreen text-lg p-1"></i></a> --}}
                                     <a href="{{ route('student.edit', $student->id) }}"><i class="bi bi-pencil-square text-lg p-1"></i></i></a>
-                                    <a href="{{ route('student.edit', $student->id) }}"><i class="bi bi-eye text-lg p-1"></i></i></a>
+                                    <a href="{{ route('student.show', $student->id) }}"><i class="bi bi-eye text-lg p-1"></i></i></a>
                                     <form action="{{  route('student.destroy', $student->id) }}" method="POST">
                                         @csrf
                                         @method('delete')
-                                        <button type="submit" class="btn btn-danger">
-                                            <i class="bi bi-trash3 text-lg"></i></i>
+                                        <div></div>
+                                        <button type="submit" class="no-border">
+                                            <i class="bi bi-trash"></i></i>
                                         </button>
                                     </form>
                                     {{-- <a href="{{ route('modiul.destroy', $modiul->id) }}"><i class="bi bi-trash3 text-lg p-1"></i></i></a> --}}
@@ -221,8 +228,21 @@
                   </table>
             </table>
         </div>
+        </div>
     </div> 
 </div>
 
-         
+<style>
+    /* Remove default button styling */
+    button.no-border {
+      border: none;
+      background-color: transparent;
+      padding: 0;
+    }
+  
+    button.no-border .bi {
+      font-size: 1.4rem; 
+      color: #f5423c; 
+    }
+  </style>     
 @endsection

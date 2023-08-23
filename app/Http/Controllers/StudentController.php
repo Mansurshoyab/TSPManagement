@@ -44,6 +44,7 @@ class StudentController extends Controller
             'address' => 'required|string|max:50',
             'gender' => 'required',
             'admission_date' => 'required|date',
+            'status' => 'required',
             'major' => 'required|string|min:0',
         ]);
 
@@ -56,7 +57,9 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        //
+        $course = Course::all();
+        $category = Category::all();
+        return view('pages.student.show')->with(['course' => $course, 'category' => $category , 'student' => $student]);
     }
 
     /**
@@ -84,6 +87,7 @@ class StudentController extends Controller
             'address' => 'required|string|max:50',
             'gender' => 'required',
             'admission_date' => 'required|date',
+            'status' => 'required',
             'major' => 'required|string|min:0',
         ]);
         

@@ -22,6 +22,7 @@ class Student extends Model
         'gender',
         'major',
         'admission_date',
+        'status',
     ];
 
     public function course(): BelongsTo
