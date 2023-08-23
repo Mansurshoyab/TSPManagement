@@ -25,6 +25,8 @@ return new class extends Migration
             $table->bigInteger('major')->unsigned();
             $table->foreign('major')->references('id')->on('categories')->onDelete('cascade');
             $table->date('admission_date');
+            $table->string('status');
+            //status can be paid or due
             $table->timestamps();
         });
     }

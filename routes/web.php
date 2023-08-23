@@ -8,6 +8,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FeesController;
 use App\Http\Controllers\MarksController;
 use App\Http\Controllers\ModiulController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TrainerController;
 use Illuminate\Support\Facades\Route;
@@ -71,6 +72,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::resource('student', StudentController::class);
     Route::resource('fees', FeesController::class);
     Route::resource('marks', MarksController::class);
+    Route::resource('payment', PaymentController::class);
 });
 
 

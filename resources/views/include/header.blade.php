@@ -137,6 +137,11 @@
                     <i class="bi bi-person-circle"></i>
                     <span>Student Information</span></a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('payment.index') }}">
+                    <i class="bi bi-person-circle"></i>
+                    <span>Payment Information</span></a>
+            </li>
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">

@@ -162,6 +162,7 @@
                         <th class="col-md-2">address</th>
                         <th class="col-md-1">Gender</th>
                         <th class="col-md-1">Addmission Date</th>
+                        <th class="col-md-1">Status</th>
                         <th class="col-md-1">Major</th>
                         <th class="col-md-1">Action</th>
                       </tr>
@@ -179,6 +180,12 @@
                                 <td>{{ $student->address }}</td>
                                 <td>{{ $student->gender }}</td>
                                 <td>{{ $student->admission_date }}</td>
+                                @if ($student->status == 'due')
+                                <td class="text-danger">{{ $student->status }}</td>
+                                    @else
+                                <td class="text-primary">{{ $student->status }}</td>
+                                @endif
+
                                 <td>
                                    
                                     {{-- {{ $student->category ? $student->category->name : 'N/A' }} --}}
@@ -198,6 +205,7 @@
                                 <td>
                                     {{-- <a href="{{ route('category.show', $category->id) }}"><i class="bi bi-arrows-fullscreen text-lg p-1"></i></a> --}}
                                     <a href="{{ route('student.edit', $student->id) }}"><i class="bi bi-pencil-square text-lg p-1"></i></i></a>
+                                    <a href="{{ route('student.edit', $student->id) }}"><i class="bi bi-eye text-lg p-1"></i></i></a>
                                     <form action="{{  route('student.destroy', $student->id) }}" method="POST">
                                         @csrf
                                         @method('delete')

@@ -42,12 +42,17 @@ class Course extends Model
     {
         return $this->hasMany(Student::class);
     }
-    public function fees():HasMany
+    public function fees(): HasMany
     {
         return $this->hasMany(Fees::class);
     }
-    public function marks():HasMany
+    public function marks(): HasMany
     {
         return $this->hasMany(Marks::class);
     }
+    public function batches(): HasMany
+    {
+        return $this->hasMany(Batch::class);
+    }
+    
 }
