@@ -134,8 +134,8 @@
                     <th scope="col">Trainer</th>
                     <th scope="col">Course Duretion</th>
                     <th scope="col">Start Date</th>
-                    <th scope="col">Course Fee</th>
                     <th scope="col">End Date</th>
+                    <th scope="col">Course Fee</th>
                     <th scope="col">Location</th>
                     <th scope="col">Action</th>
                   </tr>
