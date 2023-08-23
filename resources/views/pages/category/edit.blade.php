@@ -14,13 +14,7 @@
                             <div class="row mt-3">
                                 <div class="col-sm-12 form-group">
                                     <label><b>Edit Category</b></label>
-                                    <select name="name" class="form-control">
-                                        <option value="Java" {{ $category->name === 'Java' ? 'selected' : '' }}>Java</option>
-                                        <option value="JavaScript" {{ $category->name === 'JavaScript' ? 'selected' : '' }}>JavaScript</option>
-                                        <option value="C" {{ $category->name === 'C' ? 'selected' : '' }}>C</option>
-                                        <option value="C++" {{ $category->name === 'C++' ? 'selected' : '' }}>C++</option>
-                                        <option value="PHP" {{ $category->name === 'PHP' ? 'selected' : '' }}>PHP</option>
-                                    </select>
+                                    <input name="name" value="{{ $category->name }}" class="form-control" type="text">
                                     <div class="text-danger">
                                         @error('name')
                                             <strong class="font-weight-bold">{{ $message }}</strong>

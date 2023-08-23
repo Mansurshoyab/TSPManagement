@@ -18,14 +18,7 @@
                             <div class="row mt-3">
                                 <div class="col-sm-12 form-group">
                                     <label>Course Name :</label>
-                                    <select name="name" class="form-control" id="">
-                                        <option value="">---SELECT---</option>
-                                        <option value="Java">Java</option>
-                                        <option value="JavaScript">Java Script</option>
-                                        <option value="C">C</option>
-                                        <option value="C++">C++</option>
-                                        <option value="PHP">PHP</option>
-                                    </select>
+                                    <input type="text" name="name" class="form-control" placeholder="Enter Course Name">
                                     <div class="text-danger">
                                         @error('name')
                                             <strong class="font-weight-bold">{{ $message }}</strong>
@@ -55,10 +48,6 @@
                 </div>
             </div>
 
-            <div class="ibox">
-                <div class="ibox-head">
-                    <div class="ibox-title p-5">Course Category</div>
-                </div>
                 <div class="container">
                     <table>
                         <table class="table" id="myTable">
@@ -86,7 +75,6 @@
                                                     <i class="bi bi-trash3 text-lg"></i></i>
                                                 </button>
                                             </form>
-                                            {{-- <a href="{{ route('category.destroy', $category->id) }}"><i class="bi bi-trash3 text-lg p-1"></i></i></a> --}}
                                         </td>
                                     </tr>
                                 @endforeach
@@ -94,7 +82,6 @@
                           </table>
                     </table>
                 </div>
-            </div>
         </div>
     </div> 
 </div>
