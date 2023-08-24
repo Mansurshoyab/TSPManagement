@@ -78,57 +78,8 @@
                     </div>
                 </div>
             </li>
-
-
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            {{-- <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Party </span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Party :</h6>
-                        <a class="collapse-item" href="{{ url('customers') }}">Customers </a>
-                        <a class="collapse-item" href="{{ url('suppliers') }}">Suppliers </a>
-                    </div>
-                </div>
-            </li> --}}
-
-            <!-- Nav Item - Utilities Collapse Menu -->
-            {{-- <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Products</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="{{ url('product') }}">Add Product </a>
-                        <a class="collapse-item" href="{{ url('brand') }}">Add Brands</a>
-                        <a class="collapse-item" href="{{ url('categories') }}">Add Categories </a>
-                    </div>
-                </div>
-            </li> --}}
-
-            <!-- Divider -->
             <hr class="sidebar-divider">
-
-            <!-- Nav Item - Pages Collapse Menu -->
-
-
-            <!-- Nav Item - Charts -->
-            {{-- <li class="nav-item">
-                <a class="nav-link" href="{{ url('course') }}">
-                    <i class="bi bi-info-circle"></i>
-                    <span>Course Information</span></a>
-            </li> --}}
-
-            <li class="nav-item">
+             <li class="nav-item">
                 <a class="nav-link" href="{{ route('trainer.index') }}">
                     <i class="bi bi-person-video"></i>
                     <span>Trainer Information</span></a>
@@ -141,7 +92,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('payment.index') }}">
-                    <i class="bi bi-person-circle"></i>
+                    <i class="bi bi-coin"></i>
                     <span>Payment Information</span></a>
             </li>
 
@@ -155,6 +106,11 @@
                 <a class="nav-link" href="{{ route('marks.index') }}">
                     <i class="bi bi-info-square"></i>
                     <span>Marks</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('batch.index') }}">
+                    <i class="bi bi-info-square"></i>
+                    <span>Batch</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="javascript:void(0)">

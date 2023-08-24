@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BatchController;
 use App\Http\Controllers\BottolController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CourseController;
@@ -41,6 +42,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::resource('fees', FeesController::class);
     Route::resource('marks', MarksController::class);
     Route::resource('payment', PaymentController::class);
+    Route::resource('batch', BatchController::class);
 });
 
 

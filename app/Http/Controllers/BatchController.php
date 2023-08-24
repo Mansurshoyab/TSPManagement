@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Batch;
+use App\Models\Course;
 use App\Http\Requests\StoreBatchRequest;
 use App\Http\Requests\UpdateBatchRequest;
 
@@ -13,7 +14,11 @@ class BatchController extends Controller
      */
     public function index()
     {
-        //
+        
+        $batch = Batch::all();
+        // $batch->loadMissing('course');
+        $course = Course::all();
+        return view('pages.batch.index')->with(['batch'=>$batch,'course'=>$course]);
     }
 
     /**
@@ -29,7 +34,8 @@ class BatchController extends Controller
      */
     public function store(StoreBatchRequest $request)
     {
-        //
+        Batch::create($request->all());
+        return back();
     }
 
     /**
@@ -45,7 +51,8 @@ class BatchController extends Controller
      */
     public function edit(Batch $batch)
     {
-        //
+        $batch->load('course');
+        return view('pages.batch.edit')->with(['batch'=>$batch]);
     }
 
     /**
@@ -53,7 +60,10 @@ class BatchController extends Controller
      */
     public function update(UpdateBatchRequest $request, Batch $batch)
     {
-        //
+        $batch->update(
+            $request->all()
+        );
+        return redirect()->route('batch.index');
     }
 
     /**
