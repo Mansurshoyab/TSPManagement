@@ -138,13 +138,13 @@
                                         </div>
                                         <div class="col-sm-4 form-group">
                                             <label>Major :</label>
-                                            <select name="major" class="form-control" id="">
+                                            <select name="category_id" class="form-control" id="">
                                                 @foreach ($categories as $category)
                                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
                                                 @endforeach
                                             </select>
                                             <div class="text-danger">
-                                                @error('major')
+                                                @error('category_id')
                                                     <strong class="font-weight-bold">{{ $message }}</strong>
                                                 @enderror
                                             </div>
@@ -192,22 +192,22 @@
                                 <td class="text-primary text-capitalize">{{ $student->status }}</td>
                                 @endif
 
-                                <td>
+                                {{-- <td>
                                    
-                                    {{-- {{ $student->category ? $student->category->name : 'N/A' }} --}}
+                                    {{ $student->category ? $student->category->name : 'N/A' }}
 
-                                    {{-- @foreach($categories as $category) 
+                                    @foreach($categories as $category) 
                                         <h1>{{ $category }}</h1>
-                                    @endforeach --}}
+                                    @endforeach
                                     @foreach ($categories as $category)
                                         @if ($category->id == $student->id )
                                         {{ $category->name }}
                                         @endif
-                                        {{-- <option value="{{ $category->id }}">{{ $category->name }}</option> --}}
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach
-
-                                </td>
-                                {{-- <td>{{ $student->category->name }}</td> --}}
+                                    
+                                </td> --}}
+                                <td>{{ $student->category->name }}</td>
                                 <td>
                                     {{-- <a href="{{ route('category.show', $category->id) }}"><i class="bi bi-arrows-fullscreen text-lg p-1"></i></a> --}}
                                     <a href="{{ route('student.edit', $student->id) }}"><i class="bi bi-pencil-square text-lg p-1"></i></i></a>

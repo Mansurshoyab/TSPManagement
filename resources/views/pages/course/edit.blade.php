@@ -41,7 +41,7 @@
                             <div class="row">
                                 <div class="col-sm-12 form-group">
                                     <label>Course Description : </label>
-                                    <textarea name="description" class="form-control" placeholder ="Course Description" id="description" cols="10"rows="5">{{ $category->description }}</textarea>
+                                    <textarea name="description" class="form-control" placeholder ="Course Description" id="description" cols="10"rows="5">{{ $course->description }}</textarea>
                                     <div class="text-danger">
                                         @error('description')
                                             <strong class="font-weight-bold">{{ $message }}</strong>

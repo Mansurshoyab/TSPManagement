@@ -45,7 +45,7 @@ class StudentController extends Controller
             'gender' => 'required',
             'admission_date' => 'required|date',
             'status' => 'required',
-            'major' => 'required|string|min:0',
+            'category_id' => 'required',
         ]);
 
         Student::create($request->all());
@@ -77,6 +77,7 @@ class StudentController extends Controller
      */
     public function update(UpdateStudentRequest $request, Student $student)
     {
+        // dd($request);
         $this->validate($request,[
             'course_id' => 'required|string|max:12',
             'first_name' => 'required|string|max:12',
@@ -88,7 +89,7 @@ class StudentController extends Controller
             'gender' => 'required',
             'admission_date' => 'required|date',
             'status' => 'required',
-            'major' => 'required|string|min:0',
+            'category_id' => 'required|string|min:0',
         ]);
         
         $student->update([
@@ -101,7 +102,8 @@ class StudentController extends Controller
             'gender' =>$request->input('gender'),
             'address' => $request->input('address'),
             'admission_date' => $request->input('admission_date'),
-            'major' =>$request->input('major'),
+            'status' => $request->input('status'),
+            'category_id' =>$request->input('category_id'),
         ]);
         return redirect()->route('student.index');
     }

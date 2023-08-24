@@ -20,7 +20,7 @@ class Student extends Model
         'phone',
         'address',
         'gender',
-        'major',
+        'category_id',
         'admission_date',
         'status',
     ];
@@ -33,17 +33,16 @@ class Student extends Model
     {
         return $this->belongsTo(Category::class);
     }
-    public function fees():HasMany
+    public function fees(): HasMany
     {
         return $this->hasMany(Fees::class);
     }
-    public function marks():HasMany
+    public function marks(): HasMany
     {
         return $this->hasMany(Marks::class);
     }
-    public function payments():HasMany
+    public function payments(): HasMany
     {
         return $this->hasMany(Payment::class);
     }
-    
 }

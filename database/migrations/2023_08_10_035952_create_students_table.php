@@ -22,8 +22,8 @@ return new class extends Migration
             $table->string('phone',50);
             $table->string('address',100);
             $table->tinyInteger('gender');
-            $table->bigInteger('major')->unsigned();
-            $table->foreign('major')->references('id')->on('categories')->onDelete('cascade');
+            $table->bigInteger('category_id')->unsigned();
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->date('admission_date');
             $table->string('status');
             //status can be paid or due

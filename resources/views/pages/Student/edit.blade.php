@@ -117,8 +117,20 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-6 form-group">
+                                        <label>Payment Status :</label>
+                                        <select name="status" class="form-control" id="">
+                                            <option value="due">Due</option>
+                                            <option value="paid">Paid</option>
+                                        </select>
+                                        <div class="text-danger">
+                                            @error('admission_date')
+                                                <strong class="font-weight-bold">{{ $message }}</strong>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 form-group">
                                         <label>Major :</label>
-                                        <select name="major" class="form-control" id="">
+                                        <select name="category_id" class="form-control" id="">
                                             @foreach ($category as $category)
                                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                                             @endforeach
