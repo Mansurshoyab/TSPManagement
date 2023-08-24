@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BatchController;
 use App\Http\Controllers\BottolController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FeesController;
@@ -43,6 +44,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::resource('marks', MarksController::class);
     Route::resource('payment', PaymentController::class);
     Route::resource('batch', BatchController::class);
+    Route::resource('certificate', CertificateController::class);
 });
 
 
