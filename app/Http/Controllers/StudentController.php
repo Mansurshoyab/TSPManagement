@@ -57,11 +57,25 @@ class StudentController extends Controller
     /**
      * Display the specified resource.
      */
+    // public function show(Student $student)
+    // {   $student->load('course');
+    //     $student->loadMissing('payments');
+    //     //dd($student);
+    //     return view('pages.student.show')->with(['student' => $student]);
+    // }
+
     public function show(Student $student)
     {
+        $student->load('course'); // Load the related course
         $student->loadMissing('payments');
-        //dd($student);
-        return view('pages.student.show')->with(['student' => $student]);
+    
+        // Get the course_fee from the loaded course
+        $courseFee = $student->course->course_fee;
+    
+        return view('pages.student.show')->with([
+            'student' => $student,
+            'courseFee' => $courseFee, // Pass the course_fee to the view
+        ]);
     }
 
     /**

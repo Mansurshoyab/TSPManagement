@@ -190,7 +190,7 @@
                                 @php
                                 $totalAmount = 0; // Initialize the variable to store the total sum
                                 @endphp
-                                
+
                                 @forelse ($student->payments as $payment)
                                     @php
                                         $totalAmount += $payment->amount; // Add the current payment amount to the total
@@ -199,9 +199,9 @@
                                 @endforelse
                                 
                                 @if ($totalAmount >= $course->course_fee)
-                                    <td class="text-primary text-capitalize">Paid</td>
+                                    <td class="text-primary text-capitalize fw-bold">Paid</td>
                                 @else
-                                    <td class="text-danger text-capitalize">Due</td>
+                                    <td class="text-danger text-capitalize fw-bold">Due</td>
                                 @endif
 
                                 {{-- @if ($student->status == 'due')

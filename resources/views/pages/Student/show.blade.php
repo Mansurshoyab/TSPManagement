@@ -20,66 +20,78 @@
                               <form class="row g-3">
                                   <div class="col-md-6">
                                       <label for="inputEmail4" class="form-label fs-5 fw-bold">Email</label>
-                                      <input value="{{ $student->email }}" type="email" class="form-control fw-bold" id="inputEmail4">
+                                      <div class="form-control fw-bold" >{{ $student->email }}</div>
                                     </div>
                                 <div class="col-md-6">
                                   <label for="inputPassword4" class="form-label fs-5 fw-bold">Phone</label>
-                                  <input type="text" value="{{ $student->phone }}" class="form-control fw-bold" id="inputPassword4">
+                                  <div class="form-control fw-bold" >{{ $student->phone }}</div>
+                                  {{-- <input type="text" value="{{ $student->phone }}" class="form-control fw-bold" id="inputPassword4"> --}}
                                 </div>
                                 <div class="col-12">
                                   <label for="inputAddress" class="form-label fs-5 fw-bold">Address</label>
-                                  <input type="text" value="{{ $student->address }}" class="form-control fw-bold" id="inputAddress">
+                                  <div class="form-control fw-bold" >{{ $student->address }}</div>
+                                  {{-- <input type="text" value="{{ $student->address }}" class="form-control fw-bold" id="inputAddress"> --}}
                                 </div>
                                 <div class="col-md-6">
                                   <label for="inputCity" class="form-label fs-5 fw-bold">Date Of Birth</label>
-                                  <input type="text" value="{{ $student->dob }}" class="form-control fw-bold" id="inputCity">
+                                  <div class="form-control fw-bold" >{{ $student->dob }}</div>
+                                  {{-- <input type="text" value="{{ $student->dob }}" class="form-control fw-bold" id="inputCity"> --}}
                                 </div>
                                 <div class="col-md-4">
                                   <label for="inputState" class="form-label fs-5 fw-bold">Admission Date</label>
-                                  <input type="text" value="{{ $student->admission_date }}" class="form-control fw-bold" id="inputCity">
+                                  <div class="form-control fw-bold" >{{ $student->admission_date }}</div>
+                                  {{-- <input type="text" value="{{ $student->admission_date }}" class="form-control fw-bold" id="inputCity"> --}}
                                 </div>
                                 <div class="col-md-2">
                                   <label for="inputZip" class="form-label fs-5 fw-bold">Gender</label>
-                                  <input type="text" value="{{ $student->gender == 0 ? 'Male' : 'Female' }}" class="form-control fw-bold" id="inputZip">
+                                  <div class="form-control fw-bold" >{{ $student->gender == 0 ? 'Male' : 'Female' }}</div>
+                                  {{-- <input type="text" value="{{ $student->gender == 0 ? 'Male' : 'Female' }}" class="form-control fw-bold" id="inputZip"> --}}
                                 </div>
-                                <div class="col-md-6">
-                                  <label for="inputCity" class="form-label fs-5 fw-bold">Payment Status</label>
-                                  <input type="text"  class="form-control fw-bold" id="inputCity">
+                                <div class="col-md-6 center">
+                                    <label for="inputCity" class="form-label fs-5 fw-bold">Payment Status</label>
+                                    <div class="form fw-bold">
+                                        <ul style="list-style-type: none; padding: 0;">
+                                            <li><strong>Date & Time</strong> - <strong>Amount</strong></li> <!-- Added headings -->
+                                            
+                                            @php
+                                                $totalAmount = 0; // Initialize the variable to store the total sum
+                                            @endphp
+                                            
+                                            @forelse ($student->payments as $payment)
+                                                <li>{{ $payment->updated_at }} - {{ $payment->amount }}</li>
+                                                @php
+                                                    $totalAmount += $payment->amount; // Add the current payment amount to the total
+                                                @endphp
+                                            @empty
+                                                <li>No payments done yet</li>
+                                            @endforelse
+                                        </ul>
+                                        @php
+                                        $courseFee = $student->course->course_fee; // Assuming the course fee is associated with the student's course
+                                        $dueAmount = $courseFee - $totalAmount; // Calculate the due amount
+                                          @endphp
+                                          
+                                          @if ($dueAmount > 0)
+                                              <div class="text-danger">Due Amount: {{ $dueAmount }}</div>
+                                          @else
+                                              <div class="text-primary">No Due</div>
+                                          @endif
+                                    
+                                    </div>
                                 </div>
+                          
+                              
                                 <div class="col-md-4">
                                   <label for="inputState" class="form-label fs-5 fw-bold">Mejor</label>
-                                  <input type="text" value="{{ $student->name }}" class="form-control fw-bold" id="inputCity">
+                                  <div class="form-control fw-bold" >{{ $student->category->name }}</div>
                                 </div>
                                 <div class="col-md-2">
                                   <label for="inputZip" class="form-label fs-5 fw-bold">Course</label>
-                                  <input type="text" value="{{ $student->course->course_name }}" class="form-control fw-bold" id="inputZip">
+                                  <div class="form-control fw-bold" >{{ $student->course->course_name }}</div>
                                 </div>
-                                {{-- <ol>
-                                @forelse ($student->payments as $payment)
-                                 <li>   {{ $payment->amount }} </li>
-                                @empty
-                                    <li>No payments done yet</li>
-                                @endforelse
-                              </ol> --}}
-                              <ol>
-                                @php
-                                    $totalAmount = 0; // Initialize the variable to store the total sum
-                                @endphp
-                                
-                                @forelse ($student->payments as $payment)
-                                    <li>{{ $payment->amount }}</li>
-                                    @php
-                                        $totalAmount += $payment->amount; // Add the current payment amount to the total
-                                    @endphp
-                                @empty
-                                    <li>No payments done yet</li>
-                                @endforelse
-                            </ol>
-                            
-                            Total Sum: {{ $totalAmount }}
                                 
                                 <div class="col-md-12 text-right mt-5">
-                                    <a href="{{ url('admin/student') }}" class="btn btn-primary">Go Home</a>
+                                    <a href="{{ url('admin/student') }}" class="btn btn-primary">Go Back</a>
                                 </div>
                               </form>
                             </div>
