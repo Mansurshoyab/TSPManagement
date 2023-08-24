@@ -186,11 +186,29 @@
                                 <td>{{ $student->last_name }}</td>
                                 <td>{{ $student->email }}</td>
                                 <td>{{ $student->phone }}</td>
-                                @if ($student->status == 'due')
+
+                                @php
+                                $totalAmount = 0; // Initialize the variable to store the total sum
+                                @endphp
+                                
+                                @forelse ($student->payments as $payment)
+                                    @php
+                                        $totalAmount += $payment->amount; // Add the current payment amount to the total
+                                    @endphp
+                                @empty
+                                @endforelse
+                                
+                                @if ($totalAmount >= $course->course_fee)
+                                    <td class="text-primary text-capitalize">Paid</td>
+                                @else
+                                    <td class="text-danger text-capitalize">Due</td>
+                                @endif
+
+                                {{-- @if ($student->status == 'due')
                                 <td class="text-danger text-capitalize">{{ $student->status }}</td>
                                     @else
                                 <td class="text-primary text-capitalize">{{ $student->status }}</td>
-                                @endif
+                                @endif --}}
 
                                 {{-- <td>
                                    

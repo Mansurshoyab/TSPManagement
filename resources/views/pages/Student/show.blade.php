@@ -54,13 +54,29 @@
                                   <label for="inputZip" class="form-label fs-5 fw-bold">Course</label>
                                   <input type="text" value="{{ $student->course->course_name }}" class="form-control fw-bold" id="inputZip">
                                 </div>
-                                <ol>
+                                {{-- <ol>
                                 @forelse ($student->payments as $payment)
                                  <li>   {{ $payment->amount }} </li>
                                 @empty
                                     <li>No payments done yet</li>
                                 @endforelse
-                              </ol>
+                              </ol> --}}
+                              <ol>
+                                @php
+                                    $totalAmount = 0; // Initialize the variable to store the total sum
+                                @endphp
+                                
+                                @forelse ($student->payments as $payment)
+                                    <li>{{ $payment->amount }}</li>
+                                    @php
+                                        $totalAmount += $payment->amount; // Add the current payment amount to the total
+                                    @endphp
+                                @empty
+                                    <li>No payments done yet</li>
+                                @endforelse
+                            </ol>
+                            
+                            Total Sum: {{ $totalAmount }}
                                 
                                 <div class="col-md-12 text-right mt-5">
                                     <a href="{{ url('admin/student') }}" class="btn btn-primary">Go Home</a>
