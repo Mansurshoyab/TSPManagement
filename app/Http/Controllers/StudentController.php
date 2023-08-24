@@ -7,6 +7,7 @@ use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
 use App\Models\Category;
 use App\Models\Course;
+use App\Models\Payment;
 
 class StudentController extends Controller
 {
@@ -18,7 +19,8 @@ class StudentController extends Controller
         $course = Course::get();
         $student = Student::get();
         $category = Category::get();
-        return view('pages.student.index')->with(['course'=>$course, 'categories'=> $category, 'student'=>$student]);
+        $payment = Payment::all();
+        return view('pages.student.index')->with(['course' => $course, 'categories' => $category, 'student' => $student, 'payment' => $payment]);
     }
 
     /**
@@ -34,7 +36,7 @@ class StudentController extends Controller
      */
     public function store(StoreStudentRequest $request)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             'course_id' => 'required|string|max:12',
             'first_name' => 'required|string|max:12',
             'last_name' => 'required|string|max:12',
@@ -57,9 +59,9 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        $course = Course::all();
-        $category = Category::all();
-        return view('pages.student.show')->with(['course' => $course, 'category' => $category , 'student' => $student]);
+        $student->loadMissing('payments');
+        //dd($student);
+        return view('pages.student.show')->with(['student' => $student]);
     }
 
     /**
@@ -69,7 +71,7 @@ class StudentController extends Controller
     {
         $course = Course::all();
         $category = Category::all();
-        return view('pages.student.edit')->with(['course' => $course, 'category' => $category , 'student' => $student]);
+        return view('pages.student.edit')->with(['course' => $course, 'category' => $category, 'student' => $student]);
     }
 
     /**
@@ -78,7 +80,7 @@ class StudentController extends Controller
     public function update(UpdateStudentRequest $request, Student $student)
     {
         // dd($request);
-        $this->validate($request,[
+        $this->validate($request, [
             'course_id' => 'required|string|max:12',
             'first_name' => 'required|string|max:12',
             'last_name' => 'required|string|max:12',
@@ -91,7 +93,7 @@ class StudentController extends Controller
             'status' => 'required',
             'category_id' => 'required|string|min:0',
         ]);
-        
+
         $student->update([
             'course_id' => $request->input('course_id'),
             'first_name' => $request->input('first_name'),
@@ -99,11 +101,11 @@ class StudentController extends Controller
             'dob' => $request->input('dob'),
             'email' => $request->input('email'),
             'phone' => $request->input('phone'),
-            'gender' =>$request->input('gender'),
+            'gender' => $request->input('gender'),
             'address' => $request->input('address'),
             'admission_date' => $request->input('admission_date'),
             'status' => $request->input('status'),
-            'category_id' =>$request->input('category_id'),
+            'category_id' => $request->input('category_id'),
         ]);
         return redirect()->route('student.index');
     }

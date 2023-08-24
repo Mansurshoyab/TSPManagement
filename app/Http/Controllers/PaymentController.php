@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Payment;
 use App\Http\Requests\StorePaymentRequest;
 use App\Http\Requests\UpdatePaymentRequest;
+use App\Models\Student;
 
 class PaymentController extends Controller
 {
@@ -13,7 +14,9 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        //
+        $student = Student::all();
+        $payment = Payment::all();
+        return view('pages.payment.index')->with(['student'=> $student, 'payment'=>$payment]);
     }
 
     /**
@@ -29,7 +32,9 @@ class PaymentController extends Controller
      */
     public function store(StorePaymentRequest $request)
     {
-        //
+        // dd($request);
+        Payment::create($request->all());
+        return back();
     }
 
     /**
@@ -45,7 +50,8 @@ class PaymentController extends Controller
      */
     public function edit(Payment $payment)
     {
-        //
+        $student = Student::all();
+        return view('pages.payment.edit')->with(['student'=>$student, 'payment'=>$payment]);
     }
 
     /**
@@ -53,7 +59,10 @@ class PaymentController extends Controller
      */
     public function update(UpdatePaymentRequest $request, Payment $payment)
     {
-        //
+        $payment->update(
+            $request->all()
+        );
+        return redirect()->route('payment.index');
     }
 
     /**
@@ -61,6 +70,7 @@ class PaymentController extends Controller
      */
     public function destroy(Payment $payment)
     {
-        //
+        $payment->delete();
+        return redirect()->route('payment.index');
     }
 }

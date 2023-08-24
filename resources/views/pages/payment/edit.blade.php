@@ -11,8 +11,9 @@
                 </div>
 
                 <div class="" id="DonorAdd" tabindex="-1" role="dialog" aria-labelledby="DonorAdd" aria-hidden="true">
-                    <form action="" method="POST">
+                    <form action="{{ route('payment.update', $payment->id) }}" method="POST">
                         @csrf
+                        @method('PUT')
                         <div class="container">
                             <!--form body start here-->
                             <div class="row col-md-12 mt-3">
@@ -31,7 +32,7 @@
                                 </div>
                                 <div class="col-md-6 form-group">
                                     <label>Amount :</label>
-                                    <input type="text" name="amount" class="form-control" placeholder="Enter Your Payment">
+                                    <input type="text" name="amount" value="{{ $payment->amount }}" class="form-control" placeholder="Enter Course Name">
                                     <div class="text-danger">
                                         @error('name')
                                             <strong class="font-weight-bold">{{ $message }}</strong>
@@ -42,7 +43,7 @@
                             <div class="row">
                                 <div class="col-sm-12 form-group">
                                     <label>Payment Comment : </label>
-                                    <textarea name="comment" class="form-control" placeholder ="Course Description" id="description" cols="10"rows="5"></textarea>
+                                    <textarea name="comment" class="form-control" placeholder ="Course Description" id="description" cols="10"rows="5">{{ $payment->comment }}</textarea>
                                     <div class="text-danger">
                                         @error('description')
                                             <strong class="font-weight-bold">{{ $message }}</strong>
@@ -52,7 +53,7 @@
                             </div>
                             <div class="row ">
                                 <div class="col-sm-12 form-group text-right">
-                                    <input type="submit" value="Add Payment" class="btn btn-primary">
+                                    <input type="submit" value="Update" class="btn btn-primary">
                                 </div>
                             </div>
                             <!--form body end -->
@@ -60,43 +61,6 @@
                     </form>
                 </div>
             </div>
-
-                <div class="container">
-                    <table>
-                        <table class="table" id="myTable">
-                            <thead class="">
-                              <tr class="mt-5">
-                                <th class="col-md-2">ID</th>
-                                <th class="col-md-2">Student Name</th>
-                                <th class="col-md-1">Amount</th>
-                                <th class="col-md-4">Comment</th>
-                                <th class="col-md-2">Action</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($payment as $payment)
-                                    <tr>
-                                        <td scope="row">{{ $payment->id }}</td>
-                                        <td>{{ $payment->student->last_name }}</td>
-                                        <td>{{ $payment->amount }}</td>
-                                        <td>{{ $payment->comment }}</td>
-                                        <td>
-                                            <a href="{{ route('payment.show', $payment->id) }}"><i class="bi bi-arrows-fullscreen text-lg p-1"></i></a>
-                                            <a href="{{ route('payment.edit', $payment->id) }}"><i class="bi bi-pencil-square text-lg p-1"></i></i></a>
-                                            <form action="{{  route('payment.destroy', $payment->id) }}" method="POST">
-                                                @csrf
-                                                @method('delete')
-                                                <button type="submit" class="btn btn-danger">
-                                                    <i class="bi bi-trash3 text-lg"></i></i>
-                                                </button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                          </table>
-                    </table>
-                </div>
         </div>
     </div> 
 </div>
