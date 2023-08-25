@@ -89,21 +89,27 @@
                             <thead class="">
                               <tr class="mt-5">
                                 <th class="col-md-2">ID</th>
-                                <th class="col-md-2">Course Name</th>
-                                <th class="col-md-2">Batch Name</th>
+                                <th class="col-md-2">Course Id</th>
+                                <th class="col-md-2">Student Id</th>
+                                <th class="col-md-2">Grade</th>
+                                <th class="col-md-2">Issued Date</th>
+                                <th class="col-md-2">Issued By</th>
                                 <th class="col-md-2">Action</th>
                               </tr>
                             </thead>
                             <tbody>
-                                {{-- @foreach ($batch as $batch)
+                                @foreach ($certificate as $certificate)
                                     <tr>
-                                        <td scope="row">{{ $batch->id }}</td>
-                                        <td>{{ $batch->course->course_name }}</td>
-                                        <td>{{ $batch->name }}</td>
+                                        <td scope="row">{{ $certificate->id }}</td>
+                                        <td>{{ $certificate->course->course_name }}</td>
+                                        <td>{{ $certificate->student->first_name }}</td>
+                                        <td>{{ $certificate->grade }}</td>
+                                        <td>{{ $certificate->issue_date }}</td>
+                                        <td>{{ $certificate->issued_by }}</td>
                                         <td>
-                                            <a href="{{ route('batch.show', $name->id) }}"><i class="bi bi-arrows-fullscreen text-lg p-1"></i></a>
-                                            <a href="{{ route('batch.edit', $batch->id) }}"><i class="bi bi-pencil-square text-lg p-1"></i></i></a>
-                                            <form action="{{  route('batch.destroy', $batch->id) }}" method="POST">
+                                            <a href="{{ route('certificate.show', $certificate->id) }}"><i class="btn btn-primary">certificate</i></a>
+                                            <a href="{{ route('certificate.edit', $certificate->id) }}"><i class="bi bi-pencil-square text-lg p-1"></i></i></a>
+                                            <form action="{{  route('certificate.destroy', $certificate->id) }}" method="POST">
                                                 @csrf
                                                 @method('delete')
                                                 <button type="submit" class="btn btn-danger">
@@ -112,7 +118,7 @@
                                             </form>
                                         </td>
                                     </tr>
-                                @endforeach --}}
+                                @endforeach
                             </tbody>
                           </table>
                     </table>

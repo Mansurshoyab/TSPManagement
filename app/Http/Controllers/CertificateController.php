@@ -18,6 +18,7 @@ class CertificateController extends Controller
         $course = Course::all();
         // dd($course);
         $student = Student::all();
+        // dd($student);
         $certificate = Certificate::all();
         return view('pages.certificate.index')->with(['courses' => $course, 'student' => $student, 'certificate' => $certificate]);
     }
@@ -35,7 +36,8 @@ class CertificateController extends Controller
      */
     public function store(StoreCertificateRequest $request)
     {
-        //
+        Certificate::create($request->all());
+        return back();
     }
 
     /**
@@ -43,7 +45,10 @@ class CertificateController extends Controller
      */
     public function show(Certificate $certificate)
     {
-        //
+        $certificate->load('course');
+        $certificate->load('student');
+        // dd($certificate);
+        return view('pages.certificate.show')->with(['certificate'=>$certificate]);
     }
 
     /**
