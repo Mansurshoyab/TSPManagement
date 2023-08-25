@@ -54,5 +54,8 @@ class Course extends Model
     {
         return $this->hasMany(Batch::class);
     }
-    
+    public function certificate(): HasMany
+    {
+        return $this->hasMany(Certificate::class);
+    }
 }

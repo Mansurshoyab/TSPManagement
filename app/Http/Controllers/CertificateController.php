@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Certificate;
 use App\Http\Requests\StoreCertificateRequest;
 use App\Http\Requests\UpdateCertificateRequest;
+use App\Models\Course;
+use App\Models\Student;
 
 class CertificateController extends Controller
 {
@@ -13,7 +15,11 @@ class CertificateController extends Controller
      */
     public function index()
     {
-        //
+        $course = Course::all();
+        // dd($course);
+        $student = Student::all();
+        $certificate = Certificate::all();
+        return view('pages.certificate.index')->with(['courses' => $course, 'student' => $student, 'certificate' => $certificate]);
     }
 
     /**

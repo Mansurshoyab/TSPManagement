@@ -45,4 +45,8 @@ class Student extends Model
     {
         return $this->hasMany(Payment::class);
     }
+    public function certificate(): HasMany
+    {
+        return $this->hasMany(Certificate::class);
+    }
 }
