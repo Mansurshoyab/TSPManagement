@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('address', 80);
             $table->string('specialization', 80);
             $table->string('experience', 80);
-            $table->tinyInteger('status')->default(0);
+            $table->string('status')->default(0);
             $table->timestamps();
         });
     }

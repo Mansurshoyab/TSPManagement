@@ -12,14 +12,18 @@ class Modiul extends Model
     use HasFactory;
 
     protected $fillable = [
-        'modiul_name',
         'course_id',
+        'student_id',
         'description',
     ];
 
     public function course(): BelongsTo
     {
         return $this->belongsTo(Course::class);
+    }
+    public function student(): BelongsTo
+    {
+        return $this->belongsTo(Student::class);
     }
     public function marks():HasMany
     {

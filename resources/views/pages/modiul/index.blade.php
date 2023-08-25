@@ -14,7 +14,7 @@
                         @csrf
                         <div class="container">
                             <!--form body start here-->
-                            <div class="row mt-3">
+                            <div class="row ">
                                 <div class="col-sm-6 form-group">
                                     <label>Course Id : </label>
                                     <select name="course_id" id="" class="form-control">

@@ -6,6 +6,7 @@ use App\Models\Modiul;
 use App\Http\Requests\StoreModiulRequest;
 use App\Http\Requests\UpdateModiulRequest;
 use App\Models\Course;
+use App\Models\Student;
 
 class ModiulController extends Controller
 {
@@ -17,7 +18,8 @@ class ModiulController extends Controller
     {
         $course = Course::all();
         $modiuls  = Modiul::all();
-        return view('pages.modiul.index')->with(['course'=> $course, 'modiuls'=> $modiuls ]);
+        $student = Student::all();
+        return view('pages.modiul.index')->with(['course'=> $course, 'modiuls'=> $modiuls, 'student'=> $student ]);
     }
 
     /**
@@ -59,7 +61,8 @@ class ModiulController extends Controller
     {
         // dd($modiul);
         $course = Course::all();
-        return view('pages.modiul.edit')->with(['course'=>$course,'modiul'=>$modiul,]);
+        $student = Student::all();
+        return view('pages.modiul.edit')->with(['course'=>$course,'modiul'=>$modiul, 'student'=> $student]);
     }
 
 
@@ -69,15 +72,13 @@ class ModiulController extends Controller
     public function update(UpdateModiulRequest $request, Modiul $modiul)
     {
         $this->validate($request,[
-            'course_id' => 'required|string|max:12',
+            'course_id' => 'required|string|max:50',
             'modiul_name' => 'required|string|max:50',
             'description' => 'required|string|max:255',
         ]);
         
         $modiul->update([
-            'course_id' => $request->input('course_id'),
-            'modiul_name' => $request->input('modiul_name'),
-            'description' => $request->input('description'),
+            $request->all()
         ]);
 
         return redirect()->route('modiul.index');

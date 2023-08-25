@@ -49,4 +49,8 @@ class Student extends Model
     {
         return $this->hasMany(Certificate::class);
     }
+    public function modiul(): HasMany
+    {
+        return $this->hasMany(Modiul::class);
+    }
 }

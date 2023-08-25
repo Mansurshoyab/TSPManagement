@@ -16,6 +16,7 @@ class Certificate extends Model
         'grade',
         'issue_date',
         'issued_by',
+        'category_id',
     ];
 
     public function course():BelongsTo
@@ -25,5 +26,9 @@ class Certificate extends Model
     public function student():BelongsTo
     {
         return $this->belongsTo(Student::class);
+    }
+    public function category():BelongsTo
+    {
+        return $this->belongsTo(Category::class);
     }
 }

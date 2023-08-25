@@ -1,6 +1,6 @@
 .outer-border {
     width: 800px;
-    height: 650px;
+    height: 550px;
     padding: 10px;
     text-align: center;
     border: 10px solid #673AB7;
@@ -9,7 +9,7 @@
 
 .inner-dotted-border {
     width: 750px;
-    height: 600px;
+    height: 500px;
     padding: 10px;
     text-align: center;
     border: 5px solid #673AB7;
@@ -18,6 +18,12 @@
 
 .certification{
     font-size:30px; font-weight:bold;    color: #663ab7;
+}
+
+.date{
+    padding-left: 0px;
+    display: flex;
+    justify-content: space-around;
 }
 
 .certify{
