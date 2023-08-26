@@ -39,6 +39,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::resource('trainer', TrainerController::class);
     Route::resource('course', CourseController::class);
     Route::resource('modiul', ModiulController::class);
+    Route::post('getAll', [StudentController::class, 'sendSelectedBatch']);
     Route::resource('student', StudentController::class);
     Route::resource('fees', FeesController::class);
     Route::resource('marks', MarksController::class);

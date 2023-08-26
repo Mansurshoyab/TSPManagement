@@ -29,11 +29,23 @@
                                     <div class="row">
                                         <div class="col-sm-6 form-group">
                                             <label>Course Id :</label>
-                                            <select name="course_id"  class="form-control"  id="">
+                                            <select name="course_id"  class="form-control"  id="course_id">
                                                 @foreach ($course as $course)
                                                     <option value="{{ $course->id }}">{{ $course->course_name }}</option>
                                                 @endforeach
                                             </select>
+                                            {{-- <script>
+                                                let courseId = document.querySelector('#course_id');
+                                                courseId.addEventListener('change', function () {
+                                                            $.post("http://localhost/R55/TSPManagement/public/admin/getAll",
+                                                            {
+                                                                id: "Donald Duck",
+                                                            },
+                                                            function(data, status){
+                                                                alert("Data: " + data + "\nStatus: " + status);
+                                                            });
+                                                })
+                                            </script> --}}
                                             <div class="text-danger">
                                                 @error('course_id')
                                                     <strong class="font-weight-bold">{{ $message }}</strong>
@@ -43,6 +55,7 @@
                                         <div class="col-sm-6 form-group">
                                             <label>Batch Id :</label>
                                             <select name="batch_id"  class="form-control"  id="">
+                                                {{-- {{ dd($course->batches) }} --}}
                                                 @foreach ($batch as $batch)
                                                     <option value="{{ $batch->id }}">{{ $batch->name }}</option>
                                                 @endforeach

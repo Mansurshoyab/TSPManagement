@@ -17,6 +17,7 @@ class StudentController extends Controller
      */
     public function index()
     {
+        
         $course = Course::get();
         $student = Student::get();
         $category = Category::get();
@@ -127,5 +128,10 @@ class StudentController extends Controller
     {
         $student->delete();
         return redirect()->route('student.index');
+    }
+
+    public function sendSelectedBatch ($id) {
+        
+        return response()->json(['name' => "Hello Mohd Rejoan"]);
     }
 }
