@@ -38,10 +38,10 @@ class StudentController extends Controller
      */
     public function store(StoreStudentRequest $request)
     {
-        dd($request);
+        // dd($request);
         $this->validate($request, [
-            'course_id' => 'required|string|max:40',
-            'Batch_id' => 'required|string|max:40',
+            'course_id' => 'required',
+            'batch_id' => 'required',
             'first_name' => 'required|string|max:40',
             'last_name' => 'required|string|max:40',
             'dob' => 'required|date',
@@ -100,8 +100,8 @@ class StudentController extends Controller
     {
         // dd($request);
         $this->validate($request, [
-            'course_id' => 'required|string|max:40',
-            'batch_id' => 'required|string|max:40',
+            'course_id' => 'required',
+            'batch_id' => 'required',
             'first_name' => 'required|string|max:40',
             'last_name' => 'required|string|max:40',
             'dob' => 'required|date',

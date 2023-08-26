@@ -6,10 +6,7 @@
         <div class="col-md-12">
             <div class="ibox">
                 <div class="ibox-head">
-                    <div class="ibox-title">Student Information</div>
-                        {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DonorAdd">
-                            Add Student
-                        </button> --}}
+                    <div class="ibox-title">Edit Information</div>
                 </div>
 
                 <div class="" id="DonorAdd" tabindex="-1" role="dialog" aria-labelledby="DonorAdd" aria-hidden="true">
@@ -33,6 +30,22 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-6 form-group">
+                                        <label>Batch Id :</label>
+                                        <select name="batch_id"  class="form-control"  id="">
+                                            @foreach ($batch as $batch)
+                                                <option value="{{ $batch->id }}">{{ $batch->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        <div class="text-danger">
+                                            @error('course_id')
+                                                <strong class="font-weight-bold">{{ $message }}</strong>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6 form-group">
                                         <label>First Name : </label>
                                         <input name="first_name" value="{{ $student->first_name }}" class="form-control" type="text" placeholder="Enter Your First Name">
                                         <div class="text-danger">
@@ -41,8 +54,6 @@
                                             @enderror
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-sm-6 form-group">
                                         <label>Last Name : </label>
                                         <input name="last_name" value="{{ $student->last_name }}"  class="form-control" type="text" placeholder="Enter Your Last Name">
@@ -52,6 +63,9 @@
                                             @enderror
                                         </div>
                                     </div>
+
+                                </div>
+                                <div class="row">
                                     <div class="col-sm-6 form-group">
                                         <label>Date Of Birth : </label>
                                         <input name="dob" value="{{ $student->dob }}" class="form-control" type="date" placeholder=" Enter Your Date Of Birth">
@@ -61,8 +75,6 @@
                                             @enderror
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-sm-6 form-group">
                                         <label>Email : </label>
                                         <input name="email" value="{{ $student->email }}" class="form-control" type="email" placeholder="Enter Your Email">
@@ -72,6 +84,9 @@
                                             @enderror
                                         </div>
                                     </div>
+
+                                </div>
+                                <div class="row">
                                     <div class="col-sm-6 form-group">
                                         <label>Phone : </label>
                                         <input name="phone" value="{{ $student->phone }}" class="form-control" type="text" placeholder="Enter Your Number">
@@ -81,8 +96,6 @@
                                             @enderror
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-sm-6 form-group">
                                         <label>Gender : </label>
                                         <select class="form-control" id="gender" name="gender">
@@ -96,6 +109,9 @@
                                             @enderror
                                         </div>
                                     </div>
+
+                                </div>
+                                <div class="row">
                                     <div class="col-sm-6 form-group">
                                         <label>address : </label>
                                         <textarea name="address" class="form-control" placeholder ="address" id="" cols="2"rows="1">{{ $student->address }}</textarea>
@@ -105,8 +121,6 @@
                                             @enderror
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-sm-6 form-group">
                                         <label>Addmission Date :</label>
                                         <input name="admission_date" value="{{ $student->admission_date }}" class="form-control" type="date" placeholder="Enter Your Addmimite Date">
