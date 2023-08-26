@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Certificate;
 use App\Http\Requests\StoreCertificateRequest;
 use App\Http\Requests\UpdateCertificateRequest;
+use App\Models\Category;
 use App\Models\Course;
 use App\Models\Student;
 
@@ -19,8 +20,9 @@ class CertificateController extends Controller
         // dd($course);
         $student = Student::all();
         // dd($student);
+        $category = Category::all();
         $certificate = Certificate::all();
-        return view('pages.certificate.index')->with(['courses' => $course, 'student' => $student, 'certificate' => $certificate]);
+        return view('pages.certificate.index')->with(['courses' => $course, 'student' => $student, 'certificate' => $certificate, 'category'=>$category]);
     }
 
     /**
@@ -36,6 +38,7 @@ class CertificateController extends Controller
      */
     public function store(StoreCertificateRequest $request)
     {
+        // dd($request);
         Certificate::create($request->all());
         return back();
     }
@@ -46,9 +49,10 @@ class CertificateController extends Controller
     public function show(Certificate $certificate)
     {
         $certificate->load('course');
+        $certificate->load('category');
         $certificate->load('student');
         // dd($certificate);
-        return view('pages.certificate.show')->with(['certificate'=>$certificate]);
+        return view('pages.certificate.show')->with(['certificate' => $certificate]);
     }
 
     /**

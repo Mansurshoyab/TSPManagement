@@ -26,8 +26,12 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        Category::factory(10)->create();
-        
+        $this->call([
+            CategorySeeder::class,
+            UserSeeder::class,
+        ]);
+        // Category::factory(10)->create();
+
         Trainer::factory(10)->create();
 
         Course::factory(10)->create();
@@ -36,7 +40,7 @@ class DatabaseSeeder extends Seeder
 
         Student::factory(10)->create();
 
-        Fees ::factory(10)->create();
+        Fees::factory(10)->create();
 
         Modiul::factory(10)->create();
 
