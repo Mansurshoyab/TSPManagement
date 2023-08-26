@@ -41,6 +41,21 @@
                                             </div>
                                         </div>
                                         <div class="col-sm-6 form-group">
+                                            <label>Batch Id :</label>
+                                            <select name="batch_id"  class="form-control"  id="">
+                                                @foreach ($batch as $batch)
+                                                    <option value="{{ $batch->id }}">{{ $batch->name }}</option>
+                                                @endforeach
+                                            </select>
+                                            <div class="text-danger">
+                                                @error('course_id')
+                                                    <strong class="font-weight-bold">{{ $message }}</strong>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6 form-group">
                                             <label>First Name : </label>
                                             <input name="first_name" class="form-control" type="text" placeholder="Enter Your First Name">
                                             <div class="text-danger">
@@ -49,8 +64,6 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
                                         <div class="col-sm-6 form-group">
                                             <label>Last Name : </label>
                                             <input name="last_name" class="form-control" type="text" placeholder="Enter Your Last Name">
@@ -60,6 +73,8 @@
                                                 @enderror
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="row">
                                         <div class="col-sm-6 form-group">
                                             <label>Date Of Birth : </label>
                                             <input name="dob" class="form-control" type="date" placeholder=" Enter Your Date Of Birth">
@@ -69,8 +84,6 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
                                         <div class="col-sm-6 form-group">
                                             <label>Email : </label>
                                             <input name="email" class="form-control" type="email" placeholder="Enter Your Email">
@@ -80,6 +93,8 @@
                                                 @enderror
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="row">
                                         <div class="col-sm-6 form-group">
                                             <label>Phone : </label>
                                             <input name="phone" class="form-control" type="text" placeholder="Enter Your Number">
@@ -89,8 +104,6 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
                                         <div class="col-sm-6 form-group">
                                             <label>Gender : </label>
                                             <select class="form-control" id="gender" name="gender">
@@ -104,6 +117,8 @@
                                                 @enderror
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="row">
                                         <div class="col-sm-6 form-group">
                                             <label>address : </label>
                                             <textarea name="address" class="form-control" placeholder ="address" id="" cols="2"rows="1"></textarea>
@@ -113,9 +128,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-4 form-group">
+                                        <div class="col-sm-6 form-group">
                                             <label>Addmission Date :</label>
                                             <input name="admission_date" class="form-control" type="date" placeholder="Enter Your Addmimite Date">
                                             <div class="text-danger">
@@ -124,7 +137,9 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-sm-4 form-group">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6 form-group">
                                             <label>Payment Status :</label>
                                                 <select name="status" class="form-control" id="">
                                                     <option value="due">Due</option>
@@ -136,7 +151,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-sm-4 form-group">
+                                        <div class="col-sm-6 form-group">
                                             <label>Major :</label>
                                             <select name="category_id" class="form-control" id="">
                                                 @foreach ($categories as $category)
@@ -203,31 +218,8 @@
                                 @else
                                     <td class="text-danger text-capitalize fw-bold">Due</td>
                                 @endif
-
-                                {{-- @if ($student->status == 'due')
-                                <td class="text-danger text-capitalize">{{ $student->status }}</td>
-                                    @else
-                                <td class="text-primary text-capitalize">{{ $student->status }}</td>
-                                @endif --}}
-
-                                {{-- <td>
-                                   
-                                    {{ $student->category ? $student->category->name : 'N/A' }}
-
-                                    @foreach($categories as $category) 
-                                        <h1>{{ $category }}</h1>
-                                    @endforeach
-                                    @foreach ($categories as $category)
-                                        @if ($category->id == $student->id )
-                                        {{ $category->name }}
-                                        @endif
-                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                    @endforeach
-                                    
-                                </td> --}}
                                 <td>{{ $student->category->name }}</td>
                                 <td>
-                                    {{-- <a href="{{ route('category.show', $category->id) }}"><i class="bi bi-arrows-fullscreen text-lg p-1"></i></a> --}}
                                     <a href="{{ route('student.edit', $student->id) }}"><i class="bi bi-pencil-square text-lg p-1"></i></i></a>
                                     <a href="{{ route('student.show', $student->id) }}"><i class="bi bi-eye text-lg p-1"></i></i></a>
                                     <form action="{{  route('student.destroy', $student->id) }}" method="POST">
@@ -238,7 +230,6 @@
                                             <i class="bi bi-trash"></i></i>
                                         </button>
                                     </form>
-                                    {{-- <a href="{{ route('modiul.destroy', $modiul->id) }}"><i class="bi bi-trash3 text-lg p-1"></i></i></a> --}}
                                 </td>
                             </tr>
                         @endforeach

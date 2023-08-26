@@ -7,9 +7,9 @@
             <div class="ibox">
                 <div class="ibox-head">
                     <div class="ibox-title">Student Information</div>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DonorAdd">
+                        {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DonorAdd">
                             Add Student
-                        </button>
+                        </button> --}}
                 </div>
 
                 <div class="" id="DonorAdd" tabindex="-1" role="dialog" aria-labelledby="DonorAdd" aria-hidden="true">
@@ -87,8 +87,8 @@
                                         <label>Gender : </label>
                                         <select class="form-control" id="gender" name="gender">
                                             <option value="">---Select Option---</option>
-                                            <option value="0">Male</option>
-                                            <option value="1">Female</option>
+                                            <option value="0"{{ $student->gender === 0 ? 'selected' : '' }}>Male</option>
+                                            <option value="1" {{ $student->gender === 1 ? 'selected' : '' }}>Female</option>
                                         </select>
                                         <div class="text-danger">
                                             @error('gender')
@@ -143,9 +143,9 @@
                                     </div>
                                 </div>
                                 <!--form body end -->
-                            </div>
-                            <div class="modal-footer">
-                                <button name="submit" class="btn btn-default px-4" type="submit">Save</button>
+                                <div class="modal-footer">
+                                    <button name="submit" class="btn btn-primary px-4 mb-5" type="submit">Update</button>
+                                </div>
                             </div>
                     </form>
                 </div>

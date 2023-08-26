@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Student;
 use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
+use App\Models\Batch;
 use App\Models\Category;
 use App\Models\Course;
 use App\Models\Payment;
@@ -20,7 +21,8 @@ class StudentController extends Controller
         $student = Student::get();
         $category = Category::get();
         $payment = Payment::all();
-        return view('pages.student.index')->with(['course' => $course, 'categories' => $category, 'student' => $student, 'payment' => $payment]);
+        $batch = Batch::all();
+        return view('pages.student.index')->with(['course' => $course, 'categories' => $category, 'student' => $student, 'payment' => $payment, 'batch'=> $batch]);
     }
 
     /**
@@ -36,10 +38,12 @@ class StudentController extends Controller
      */
     public function store(StoreStudentRequest $request)
     {
+        dd($request);
         $this->validate($request, [
-            'course_id' => 'required|string|max:12',
-            'first_name' => 'required|string|max:12',
-            'last_name' => 'required|string|max:12',
+            'course_id' => 'required|string|max:40',
+            'Batch_id' => 'required|string|max:40',
+            'first_name' => 'required|string|max:40',
+            'last_name' => 'required|string|max:40',
             'dob' => 'required|date',
             'email' => 'required|email',
             'phone' => 'required|string|max:20',
@@ -85,7 +89,8 @@ class StudentController extends Controller
     {
         $course = Course::all();
         $category = Category::all();
-        return view('pages.student.edit')->with(['course' => $course, 'category' => $category, 'student' => $student]);
+        $batch = Batch::all();
+        return view('pages.student.edit')->with(['course' => $course, 'category' => $category, 'student' => $student, 'batch'=>$batch]);
     }
 
     /**
@@ -95,9 +100,10 @@ class StudentController extends Controller
     {
         // dd($request);
         $this->validate($request, [
-            'course_id' => 'required|string|max:12',
-            'first_name' => 'required|string|max:12',
-            'last_name' => 'required|string|max:12',
+            'course_id' => 'required|string|max:40',
+            'batch_id' => 'required|string|max:40',
+            'first_name' => 'required|string|max:40',
+            'last_name' => 'required|string|max:40',
             'dob' => 'required|date',
             'email' => 'required|email',
             'phone' => 'required|string|max:20',
@@ -108,19 +114,9 @@ class StudentController extends Controller
             'category_id' => 'required|string|min:0',
         ]);
 
-        $student->update([
-            'course_id' => $request->input('course_id'),
-            'first_name' => $request->input('first_name'),
-            'last_name' => $request->input('last_name'),
-            'dob' => $request->input('dob'),
-            'email' => $request->input('email'),
-            'phone' => $request->input('phone'),
-            'gender' => $request->input('gender'),
-            'address' => $request->input('address'),
-            'admission_date' => $request->input('admission_date'),
-            'status' => $request->input('status'),
-            'category_id' => $request->input('category_id'),
-        ]);
+        $student->update(
+            $request->all()
+        );
         return redirect()->route('student.index');
     }
 

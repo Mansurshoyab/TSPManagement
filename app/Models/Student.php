@@ -13,6 +13,7 @@ class Student extends Model
 
     protected $fillable = [
         'course_id',
+        'batch_id',
         'first_name',
         'last_name',
         'dob',
@@ -52,5 +53,9 @@ class Student extends Model
     public function modiul(): HasMany
     {
         return $this->hasMany(Modiul::class);
+    }
+    public function batch():BelongsTo
+    {
+        return $this->belongsTo(Batch::class);
     }
 }
