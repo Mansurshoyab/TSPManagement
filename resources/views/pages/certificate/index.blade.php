@@ -122,8 +122,8 @@
                                         <td>{{ $certificate->issue_date }}</td>
                                         <td>{{ $certificate->issued_by }}</td>
                                         <td>
-                                            <a href="{{ route('certificate.show', $certificate->id) }}"><i class="btn btn-primary">certificate</i></a>
-                                            <a href="{{ route('certificate.edit', $certificate->id) }}"><i class="bi bi-pencil-square text-lg p-1"></i></i></a>
+                                            <a href="{{ route('certificate.show', $certificate->id) }}"><i class="btn btn-success mb-2">Certificate</i></a>
+                                            <a href="{{ route('certificate.edit', $certificate->id) }}"><i class="btn btn-primary mb-2">Edit</i></i></a>
                                             <form action="{{  route('certificate.destroy', $certificate->id) }}" method="POST">
                                                 @csrf
                                                 @method('delete')

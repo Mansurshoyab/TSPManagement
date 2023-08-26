@@ -60,7 +60,13 @@ class CertificateController extends Controller
      */
     public function edit(Certificate $certificate)
     {
-        //
+        // dd($certificate);
+        $course = Course::all();
+        // dd($course);
+        $student = Student::all();
+        // dd($student);
+        $category = Category::all();
+        return view('pages.certificate.edit')->with(['courses' => $course, 'student' => $student, 'certificate' => $certificate, 'category'=>$category]);
     }
 
     /**
@@ -68,7 +74,10 @@ class CertificateController extends Controller
      */
     public function update(UpdateCertificateRequest $request, Certificate $certificate)
     {
-        //
+        $certificate->update(
+            $request->all()
+        );
+        return redirect()->route('certificate.index');
     }
 
     /**
