@@ -17,13 +17,13 @@ class StudentController extends Controller
      */
     public function index()
     {
-        
+
         $course = Course::get();
         $student = Student::get();
         $category = Category::get();
         $payment = Payment::all();
         $batch = Batch::all();
-        return view('pages.student.index')->with(['course' => $course, 'categories' => $category, 'student' => $student, 'payment' => $payment, 'batch'=> $batch]);
+        return view('pages.student.index')->with(['course' => $course, 'categories' => $category, 'student' => $student, 'payment' => $payment, 'batch' => $batch]);
     }
 
     /**
@@ -73,10 +73,10 @@ class StudentController extends Controller
     {
         $student->load('course'); // Load the related course
         $student->loadMissing('payments');
-    
+
         // Get the course_fee from the loaded course
         $courseFee = $student->course->course_fee;
-    
+
         return view('pages.student.show')->with([
             'student' => $student,
             'courseFee' => $courseFee, // Pass the course_fee to the view
@@ -91,7 +91,7 @@ class StudentController extends Controller
         $course = Course::all();
         $category = Category::all();
         $batch = Batch::all();
-        return view('pages.student.edit')->with(['course' => $course, 'category' => $category, 'student' => $student, 'batch'=>$batch]);
+        return view('pages.student.edit')->with(['course' => $course, 'category' => $category, 'student' => $student, 'batch' => $batch]);
     }
 
     /**
@@ -130,8 +130,9 @@ class StudentController extends Controller
         return redirect()->route('student.index');
     }
 
-    public function sendSelectedBatch ($id) {
-        
-        return response()->json(['name' => "Hello Mohd Rejoan"]);
-    }
+    // public function sendSelectedBatch($id)
+    // {
+
+    //     return response()->json(['name' => "Hello Mohd Rejoan"]);
+    // }
 }

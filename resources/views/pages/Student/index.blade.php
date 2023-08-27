@@ -54,7 +54,7 @@
                                         </div>
                                         <div class="col-sm-6 form-group">
                                             <label>Batch Id :</label>
-                                            <select name="batch_id"  class="form-control"  id="">
+                                            <select name="batch_id"  class="form-control"  id="batch_id">
                                                 {{-- {{ dd($course->batches) }} --}}
                                                 @foreach ($batch as $batch)
                                                     <option value="{{ $batch->id }}">{{ $batch->name }}</option>
@@ -266,5 +266,31 @@
       font-size: 1.4rem; 
       color: #f5423c; 
     }
-  </style>     
+  </style> 
+  
+<script>
+    function decorate_batch(d){
+        console.log(d);
+    $h = "<option value='-1'>Select</option>";
+        for (const k in d) {
+           $h += "<option value='"+k+"'>"+d[k]+"</option>"; 
+        }
+        $("#batch_id").html($h);
+    }
+
+    $(document).ready(function () {
+       $("#course_id").change(function () {
+        let id = $(this).val();
+        
+        if(id == "-1"){  return;}
+        let url = "{{url("getbatch")}}/"+id;
+        // alert(url);
+        // alert(id);
+        $.get(url,{},function(d){ 
+            console.log(d);           
+            decorate_batch(d);
+        });
+       })
+    });
+</script>    
 @endsection

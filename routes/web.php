@@ -39,7 +39,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::resource('trainer', TrainerController::class);
     Route::resource('course', CourseController::class);
     Route::resource('modiul', ModiulController::class);
-    Route::post('getAll', [StudentController::class, 'sendSelectedBatch']);
+    // Route::post('getAll', [StudentController::class, 'sendSelectedBatch']);
     Route::resource('student', StudentController::class);
     Route::resource('fees', FeesController::class);
     Route::resource('marks', MarksController::class);
@@ -59,5 +59,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get("getbatch/{id}", [BatchController::class, 'getbatch']);
 
 require __DIR__ . '/auth.php';

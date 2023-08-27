@@ -14,11 +14,11 @@ class BatchController extends Controller
      */
     public function index()
     {
-        
+
         $batch = Batch::all();
         // $batch->loadMissing('course');
         $course = Course::all();
-        return view('pages.batch.index')->with(['batch'=>$batch,'course'=>$course]);
+        return view('pages.batch.index')->with(['batch' => $batch, 'course' => $course]);
     }
 
     /**
@@ -52,7 +52,7 @@ class BatchController extends Controller
     public function edit(Batch $batch)
     {
         $batch->load('course');
-        return view('pages.batch.edit')->with(['batch'=>$batch]);
+        return view('pages.batch.edit')->with(['batch' => $batch]);
     }
 
     /**
@@ -72,5 +72,11 @@ class BatchController extends Controller
     public function destroy(Batch $batch)
     {
         //
+    }
+
+    public function getbatch($courseId)
+    {
+        $batch = Batch::where("course_id", $courseId)->pluck("name", "id");
+        return response()->json($batch);
     }
 }

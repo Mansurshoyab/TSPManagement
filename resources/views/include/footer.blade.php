@@ -53,11 +53,11 @@ aria-hidden="true">
 <script src="{{ asset('/') }}admin/asset/js/sb-admin-2.min.js"></script>
 
 <!-- Page level plugins -->
-<script src="{{ asset('/') }}admin/asset/vendor/chart.js/Chart.min.js"></script>
+{{-- <script src="{{ asset('/') }}admin/asset/vendor/chart.js/Chart.min.js"></script> --}}
 
 <!-- Page level custom scripts -->
-<script src="{{ asset('/') }}admin/asset/js/demo/chart-area-demo.js"></script>
-<script src="{{ asset('/') }}admin/asset/js/demo/chart-pie-demo.js"></script>
+{{-- <script src="{{ asset('/') }}admin/asset/js/demo/chart-area-demo.js"></script>
+<script src="{{ asset('/') }}admin/asset/js/demo/chart-pie-demo.js"></script> --}}
 
 <script src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 
