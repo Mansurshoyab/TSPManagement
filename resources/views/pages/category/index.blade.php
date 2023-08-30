@@ -60,9 +60,12 @@
                               </tr>
                             </thead>
                             <tbody>
+                                @php
+                                    $index = 1;
+                                @endphp
                                 @foreach ($categories as $category)
                                     <tr>
-                                        <td scope="row">{{ $category->id }}</td>
+                                        <td scope="row">{{ $index++ }}</td>
                                         <td>{{ $category->name }}</td>
                                         <td>{{ $category->description }}</td>
                                         <td>

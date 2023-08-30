@@ -206,9 +206,12 @@
                       </tr>
                     </thead>
                     <tbody>
+                        @php
+                            $index = 1;
+                        @endphp
                         @foreach ($student as $student)
                             <tr>
-                                <td scope="row">{{ $student->id }}</td>
+                                <td scope="row">{{ $index++ }}</td>
                                 <td>{{ $student->course->course_name }}</td>
                                 <td>{{ $student->first_name }}</td>
                                 <td>{{ $student->last_name }}</td>

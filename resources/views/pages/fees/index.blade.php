@@ -129,9 +129,12 @@
                   </tr>
                 </thead>
                 <tbody>
+                    @php
+                        $index = 1;
+                    @endphp
                     @foreach ($fees as $fee)
                         <tr>
-                            <td scope="row">{{ $fee->id }}</td>
+                            <td scope="row">{{ $index++ }}</td>
                             <td>{{ $fee->student->last_name }}</td>
                             <td>{{ $fee->course->course_name }}</td>
                             <td>{{ $fee->transaction_id }}</td>

@@ -99,9 +99,12 @@
                   </tr>
                 </thead>
                 <tbody>
+                    @php
+                        $index = 1;
+                    @endphp
                     @foreach ($marks as $marks)
                         <tr>
-                            <td scope="row">{{ $marks->id }}</td>
+                            <td scope="row">{{ $index++ }}</td>
                             <td>{{ $marks->student->last_name }}</td>
                             <td>{{ $marks->course->course_name }}</td>
                             <td>{{ $marks->modiul->modiul_name }}</td>

@@ -63,9 +63,12 @@
                               </tr>
                             </thead>
                             <tbody>
+                                @php
+                                    $index = 1;
+                                @endphp
                                 @foreach ($batch as $batch)
                                     <tr>
-                                        <td scope="row">{{ $batch->id }}</td>
+                                        <td scope="row">{{ $index++ }}</td>
                                         <td>{{ $batch->course->course_name }}</td>
                                         <td>{{ $batch->name }}</td>
                                         <td>

@@ -71,9 +71,12 @@
                       </tr>
                     </thead>
                     <tbody>
+                        @php
+                            $index = 1;
+                        @endphp
                         @foreach ($modiuls as $modiul)
                             <tr>
-                                <td scope="row">{{ $modiul->id }}</td>
+                                <td scope="row">{{ $index++ }}</td>
                                 <td>{{ $modiul->course->course_name }}</td>
                                 <td>{{ $modiul->modiul_name }}</td>
                                 <td>{{ $modiul->description }}</td>

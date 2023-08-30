@@ -148,9 +148,12 @@
                   </tr>
                 </thead>
                 <tbody>
+                    @php
+                        $index = 1;
+                    @endphp
                     @foreach ($trainers as $trainer)
                   <tr>
-                    <th scope="row">{{ $trainer->id }}</th>
+                    <th scope="row">{{ $index++ }}</th>
                     <td>{{ $trainer->first_name }}</td>
                     <td>{{ $trainer->last_name }}</td>
                     <td>{{ $trainer->dob }}</td>

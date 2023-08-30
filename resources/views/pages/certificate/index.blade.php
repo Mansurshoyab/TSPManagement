@@ -112,9 +112,12 @@
                               </tr>
                             </thead>
                             <tbody>
+                                @php
+                                    $index = 1;
+                                @endphp
                                 @foreach ($certificate as $certificate)
                                     <tr>
-                                        <td scope="row">{{ $certificate->id }}</td>
+                                        <td scope="row">{{ $index++ }}</td>
                                         <td>{{ $certificate->course->course_name }}</td>
                                         <td>{{ $certificate->category->name }}</td>
                                         <td>{{ $certificate->student->first_name }}</td>
