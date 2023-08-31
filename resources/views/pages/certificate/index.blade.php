@@ -1,6 +1,5 @@
 @extends('master')
 
-
 @section('body')
 <div class="page-content fade-in-up">
     <div class="row">
