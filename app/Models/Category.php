@@ -23,7 +23,7 @@ class Category extends Model
     {
         return $this->hasMany(Student::class);
     }
-    public function certificate():HasMany
+    public function certificate(): HasMany
     {
         return $this->hasMany(Certificate::class);
     }

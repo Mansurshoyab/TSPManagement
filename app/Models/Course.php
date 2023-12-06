@@ -50,7 +50,7 @@ class Course extends Model
     {
         return $this->hasMany(Marks::class);
     }
-    public function batches(): HasMany
+    public function batches(): HasMany 
     {
         return $this->hasMany(Batch::class);
     }

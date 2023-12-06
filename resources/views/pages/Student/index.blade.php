@@ -11,7 +11,7 @@
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DonorAdd">
                             Add Student
                         </button>
-                </div>
+                </div> 
 
                 <div class="modal fade" id="DonorAdd" tabindex="-1" role="dialog" aria-labelledby="DonorAdd" aria-hidden="true">
                     <form action="" method="POST">

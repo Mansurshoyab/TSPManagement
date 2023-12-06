@@ -22,7 +22,7 @@ class CertificateController extends Controller
         // dd($student);
         $category = Category::all();
         $certificate = Certificate::all();
-        return view('pages.certificate.index')->with(['courses' => $course, 'student' => $student, 'certificate' => $certificate, 'category'=>$category]);
+        return view('pages.certificate.index')->with(['courses' => $course, 'student' => $student, 'certificate' => $certificate, 'category' => $category]);
     }
 
     /**
@@ -66,7 +66,7 @@ class CertificateController extends Controller
         $student = Student::all();
         // dd($student);
         $category = Category::all();
-        return view('pages.certificate.edit')->with(['courses' => $course, 'student' => $student, 'certificate' => $certificate, 'category'=>$category]);
+        return view('pages.certificate.edit')->with(['courses' => $course, 'student' => $student, 'certificate' => $certificate, 'category' => $category]);
     }
 
     /**

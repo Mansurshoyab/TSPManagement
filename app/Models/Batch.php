@@ -12,10 +12,10 @@ class Batch extends Model
     use HasFactory;
 
     protected $fillable = [
-        'course_id',
+        'course_id', 
         'name',
     ];
-    public function course():BelongsTo
+    public function course():BelongsTo 
     {
         return $this->belongsTo(Course::class);
     }

@@ -14,7 +14,7 @@ class CategoryController extends Controller
     public function index()
     {
         $category = Category::all();
-        return view('pages.category.index')->with(['categories'=>$category]);
+        return view('pages.category.index')->with(['categories' => $category]);
     }
 
     /**
@@ -52,7 +52,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('pages.category.edit')->with(['category'=>$category]);
+        return view('pages.category.edit')->with(['category' => $category]);
     }
 
     /**
@@ -60,15 +60,15 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-       
+
         $this->validate($request, [
             'name' => "required|string",
             'description' => "required|min:10|max:255"
         ]);
 
         $category->update([
-            'name'=>$request->input('name'),
-            'description'=>$request->input('description'),
+            'name' => $request->input('name'),
+            'description' => $request->input('description'),
         ]);
         return redirect()->route('category.index');
     }

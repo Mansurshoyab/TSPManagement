@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreign('batch_id')->references('id')->on('batches')->onDelete('cascade');
             $table->string('first_name', 50);
             $table->string('last_name', 50);
-            $table->date('dob');
+            $table->date('dob'); 
             $table->string('email', 50);
             $table->string('phone', 50);
             $table->string('address', 100);

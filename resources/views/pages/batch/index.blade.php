@@ -16,7 +16,7 @@
                         <div class="container">
                             <!--form body start here-->
                             <div class="row mt-12">
-                                <div class="col-sm-6 form-group">
+                                <div class="col-sm-6 form-group"> 
                                     <label>Course Name :</label>
                                     <select name="course_id" class="form-control" id="">
                                         @foreach ($course as $course)

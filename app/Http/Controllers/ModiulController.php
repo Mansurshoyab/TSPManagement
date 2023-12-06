@@ -19,7 +19,7 @@ class ModiulController extends Controller
         $course = Course::all();
         $modiuls  = Modiul::all();
         $student = Student::all();
-        return view('pages.modiul.index')->with(['course'=> $course, 'modiuls'=> $modiuls, 'student'=> $student ]);
+        return view('pages.modiul.index')->with(['course' => $course, 'modiuls' => $modiuls, 'student' => $student]);
     }
 
     /**
@@ -35,9 +35,9 @@ class ModiulController extends Controller
      */
     public function store(StoreModiulRequest $request)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             'course_id' => 'required|string|max:25',
-            'modiul_name' => 'required|string|max:50',
+            'modiul_name' => 'required|max:50',
             'description' => 'required|string|max:255',
         ]);
 
@@ -62,7 +62,7 @@ class ModiulController extends Controller
         // dd($modiul);
         $course = Course::all();
         $student = Student::all();
-        return view('pages.modiul.edit')->with(['course'=>$course,'modiul'=>$modiul, 'student'=> $student]);
+        return view('pages.modiul.edit')->with(['course' => $course, 'modiul' => $modiul, 'student' => $student]);
     }
 
 
@@ -71,12 +71,12 @@ class ModiulController extends Controller
      */
     public function update(UpdateModiulRequest $request, Modiul $modiul)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             'course_id' => 'required|string|max:50',
             'modiul_name' => 'required|string|max:50',
             'description' => 'required|string|max:255',
         ]);
-        
+
         $modiul->update([
             $request->all()
         ]);

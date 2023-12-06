@@ -10,13 +10,13 @@
                 </div>
 
                 <div class="" id="DonorAdd" tabindex="-1" role="dialog" aria-labelledby="DonorAdd" aria-hidden="true">
-                    <form action="{{ route('modiul.index') }}" method="POST">
+                    <form action="{{ route('modiul.index') }}" method="POST" id="modiul" class="modiul">
                         @csrf
                         <div class="container">
                             <!--form body start here-->
                             <div class="row ">
                                 <div class="col-sm-6 form-group">
-                                    <label>Course Id : </label>
+                                    <label>Course Name : </label>
                                     <select name="course_id" id="" class="form-control">
                                         @foreach ($course as $course)
                                             <option value="{{ $course->id }}">{{ $course->course_name }}</option>
@@ -51,7 +51,7 @@
                             </div>
                             <div class="row ">
                                 <div class="col-sm-12 form-group text-right">
-                                    <input type="submit" value="Add Modiul" value="submit" class="btn btn-primary">
+                                    <button type="submit" id="submit" class="btn btn-primary" >Add Modiul</button>
                                 </div>
                             </div>
                         </div>
@@ -101,5 +101,86 @@
     </div> 
 </div>
 
-         
+{{-- <script>
+    $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+    $("#modiul").submit(function(event){
+        event.preventDefault();
+        var formArray = $(this).serializeArray();
+        $("button[type='submit']").prop('disabled',true);
+        $.ajax ({
+            url: '{{ route("modiul.store") }}',
+            type: 'post',
+            data: formArray,
+            datatype: 'json',
+            success: function(response){
+                $("button[type='submit']").prop('disabled',false);
+            }
+        });
+
+    });
+
+
+
+
+});
+</script> --}}
+
+
+<script>
+    $(document).ready(function () {
+        $("#modiul").submit(function (event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            var formArray = $(this).serializeArray();
+            $("button[type='submit']").prop('disabled', true);
+
+            $.ajax({
+                url: '{{ route("modiul.store") }}',
+                type: 'post',
+                data: formArray,
+                dataType: 'json', // Corrected typo: 'datatype' to 'dataType'
+                success: function (response) {
+                    $("button[type='submit']").prop('disabled', false);
+
+                    // Handle the response here
+                    if (response.success) {
+                        // If the server responds with success
+                        // You can update the table or perform any other necessary actions
+                        // For example, you can append the new row to the table
+                        var newRow = '<tr>' +
+                            '<td>' + response.data.id + '</td>' +
+                            '<td>' + response.data.course_name + '</td>' +
+                            '<td>' + response.data.modiul_name + '</td>' +
+                            '<td>' + response.data.description + '</td>' +
+                            '<td>' +
+                            // Add your action buttons here
+                            '</td>' +
+                            '</tr>';
+
+                        $('#myTable tbody').append(newRow);
+
+                        // Clear the form fields if needed
+                        $('#modiul')[0].reset();
+                    } else {
+                        // Handle errors if the server responds with an error
+                        // You can display an error message or take appropriate action
+                        console.log('Error: ' + response.error);
+                    }
+                },
+                error: function (xhr, status, error) {
+                    // Handle AJAX errors here
+                    console.log('AJAX Error: ' + error);
+                }
+            });
+        });
+    });
+    error: function (xhr, status, error) {
+    console.log('AJAX Error: ' + error);
+    console.log(xhr.responseText); // Log the response text for more details
+}
+
+</script>
 @endsection
